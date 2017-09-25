@@ -3,6 +3,6 @@ Waves Direct: Barber/Hair Salon Directory
 Bupe
 Martha
 Ruth
-Barbra
+Barbara
 Muka
 
