@@ -24,7 +24,10 @@ class Profile(models.Model):
     null=True
     )
 
-class Services(models.Model):
+class Service(models.Model):
+    class Meta:
+        verbose_name_plural = 'Services'
+    
     service_type = models.CharField(max_length = 500)
     price = models.DecimalField(
                                 max_digits=6,
@@ -34,7 +37,9 @@ class Services(models.Model):
 
 
 
-class Bookings(models.Model):
+class Appointment(models.Model):
     name_of_client = models.CharField(max_length = 50)
-    due_date = models.DateTimeField()
-    time_of_appointment = models.DateTimeField(timezone.now)
+    time_of_appointment = models.DateTimeField()
+
+    # name = models.ForeignKey(User)
+    # service_type = models.ForeignKey(Service)

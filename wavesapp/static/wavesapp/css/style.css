@@ -1,0 +1,65 @@
+/*.navbar{
+    background-color:dodgerblue;
+    padding:20px;
+    padding-bottom: 30px;
+}
+.navbarbrand{
+    color:white;
+    font-weight: bolder 200;
+    font-size: 18px;
+}
+h1{
+  font-size: 65px;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+}
+.form{
+    background-image:url("images.png");
+    background-repeat: no-repeat;
+    background-size: 115% 200%;*/
+  /*background-attachment: fixed;*/
+}
+/*
+
+footer {
+  position: bottom;
+  bottom: -70px;
+  height: 30px;
+  width: 100%;
+  color: white;
+}
+
+.searchbar{
+    align-items: center;
+    margin-left: 8.5cm;
+    margin-top: 1cm;
+}
+
+.cent{
+  align-items: center;
+  margin-left: 8.5cm;}
+
+}
+.search{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    display: inline;
+    margin-top: 2cm;
+}
+
+.ref{
+    color:black
+}
+
+.about{
+    color:black;
+    display: inline-block;
+    vertical-align: bottom;
+    float: none;
+    padding-bottom: 0.9cm;
+}
+.info{
+  color:black;
+}*/
