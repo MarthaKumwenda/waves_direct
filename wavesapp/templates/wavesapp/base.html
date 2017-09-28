@@ -1,4 +1,4 @@
-<!-- {% load static %}
+ {% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,17 +7,27 @@
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
     <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body>
+<body>
+
 <nav class="navbar navbar-default">
   <div class="container">
     <a class="navbarbrand" href="{% url 'home' %}" >HOME</a>
-    </div>
-   </nav> -->
+<div class="navbar-right">
+    <a class="navbarbrand" href="">Login</a>
+    <a class="navbarbrand" href=""><b>Sign Up</b></a>
+    <a class="navbarbrand" href=""><b>Write a review<b></a>
+    <a class="navbarbrand" href=""><b>Promotion<b></a>
+  </div>
+</div>
+</nav>
+
 
    <!-- END OF NAV -->
-<!-- <div class="container"> -->
-  <!-- <form class="form">
+<div class="pic">
+<div class="container">
+<form class="form" style=" height:500px;">
   <div class="row">
       <h1>Waves Direct</h1>
       <div class="searchbar">
@@ -25,18 +35,20 @@
         <button class="btn.btn-primary" type='search'>Enter</button>
       </div>
       <div class="cent" style="padding-top:10px;">
-      <a class="ref" href="" style="margin-right:20px;">Salons</a>
-      <a class="ref" href="" style="margin-left:20px;">Barbershop</a>
-      <a cl="ref" href="" style="margin-left:40px;">Freelancers</a>
+      <a class="ref" href="" style="margin-right:20px; color:black;">Salons</a>
+      <a class="ref" href="" style="margin-left:20px; color:black;">Barbershop</a>
+      <a class="ref" href="" style="margin-left:40px; color:black;">Freelancers</a>
       </div>
     </div>
 </form>
-</div> -->
+</div>
+</div>
+
 <!-- END OF  DIV CLASS PIC-->
 
-<!-- <div class="about">
+<div class="about">
  <footer class="footer">
-<div class="container/*padding: 8cm;*/">
+   <div class="container" style="padding:20px;">
       <div class="row">
       <div class="col-md-4">
         <h2>ABOUT US</h2>
@@ -45,24 +57,22 @@
         <a class="info" href="">Privacy Policy</a><br>
       </div>
       <div class="col-md-4">
+        <form class="form-horizontal">
+           <div class="form-group">
        <h2>DISCOVER</h2>
        <a class="info"href="">Waves Blog</a><br>
        <a class="info"href="">Developers</a><br>
-       <form class="form-horizontal">
-         <div class="form-group">
          </div>
-      <div class="form-group">
+       </form>
+    </div>
 
-      </div>
-    </form>
-   </div>
+    </div>
+    </div>
   </footer>
 </div>
-</div> -->
-<!-- </div> -->
-<!-- END OF FOOTER -->
-<!-- <script src="{% static 'wavesapp/jquery-3.2.1.js' %}"></script>
+<!-- END OF FOOTER-->
+<script src="{% static 'wavesapp/jquery-3.2.1.js' %}"></script>
 <script src="{% static 'wavesapp/bootstrap.js' %}"></script>
 <script src="{% static 'wavesapp/script.js' %}"></script>
-  </body>
-</html> -->
+</body>
+</html>
