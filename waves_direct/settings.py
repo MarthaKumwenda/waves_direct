@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wavesapp',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
