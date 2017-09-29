@@ -1,0 +1,81 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Signup</title>
+    <style media="screen">
+    #row1{
+      background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
+      background-size: auto;
+      border-radius: 5px;
+      margin:20px;
+      text-align: center;
+
+
+            }
+    h1{
+      text-align: center;
+    }
+
+    div.footer{
+      width: 150px;
+      height: 150px;
+    }
+    #footer2{
+      left: 150px;
+    }
+    #footer3{
+      left: 300px;
+    }
+    .myform{
+    text-align: left;
+      background-color: #f2f2f2;
+      width: 50%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="row1">
+        <h1>Sign Up</h1>
+        <form class="myform" action="/signup/" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+            {% if field.help_text %}
+            {% endif %}
+          </div>
+          {% endfor %}
+          <input type="submit" name="" value="submit"/>
+        </form>
+      </div>
+    </div>
+      <!-- <div class="container">
+        <div class="row">
+          <div class="footer" id="footer1">
+          <h2>ABOUT US</h2>
+            <a class="info" href="">About waves direct</a><br>
+            <a  class="info" href="">Terms Of Service</a><br>
+            <a class="info" href="">Privacy Policy</a>
+          </div>
+            <div class="footer" id="footer2">
+            <h2>DISCOVER</h2>
+            </div>
+            <div class="footer" id="footer3">
+            <h2>DISCOVER</h2>
+            <a class="info"href="">Waves Blog</a><br>
+            <a class="info"href="">Developers</a><br></a>
+          </div>
+        </div>
+      </div> -->
+  </body>
+</html>
