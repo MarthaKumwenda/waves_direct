@@ -17,6 +17,17 @@
     h1{
       text-align: center;
     }
+
+    div.footer{
+      width: 150px;
+      height: 150px;
+    }
+    #footer2{
+      left: 150px;
+    }
+    #footer3{
+      left: 300px;
+    }
     .myform{
     text-align: left;
       background-color: #f2f2f2;
@@ -28,10 +39,7 @@
       border-radius: 4px;
       box-sizing: border-box;
     }
-    /*#discover{
-      text-align: center;
-    }*/
-    </style>
+  </style>
   </head>
   <body>
     <div class="container">
@@ -44,7 +52,6 @@
             {{ field.errors }}
             {{ field.label_tag }} {{ field }}
             {% if field.help_text %}
-            <p class="help">{{ field.help_text|safe }}</p>
             {% endif %}
           </div>
           {% endfor %}
@@ -52,27 +59,23 @@
         </form>
       </div>
     </div>
-    <!-- <footer class="footer"> -->
-      <div class="container">
+      <!-- <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="footer" id="footer1">
           <h2>ABOUT US</h2>
             <a class="info" href="">About waves direct</a><br>
             <a  class="info" href="">Terms Of Service</a><br>
             <a class="info" href="">Privacy Policy</a>
           </div>
-          <!-- <form class="form-horizontal">
-            <div class="form-group"> -->
-            <div class="col-md-6">
+            <div class="footer" id="footer2">
+            <h2>DISCOVER</h2>
+            </div>
+            <div class="footer" id="footer3">
             <h2>DISCOVER</h2>
             <a class="info"href="">Waves Blog</a><br>
             <a class="info"href="">Developers</a><br></a>
           </div>
-            <!-- </div>
-          </form> -->
         </div>
-      </div>
-    <!-- </footer> -->
-
+      </div> -->
   </body>
 </html>

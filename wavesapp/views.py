@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from wavesapp.forms import SignupForm
 from django.contrib.auth import login,authenticate
@@ -21,7 +21,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('base.html')
+            return redirect('waves_list')
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
