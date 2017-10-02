@@ -15,12 +15,18 @@
       margin:20px;
       text-align: center;
       color: white;
+      padding: 200px;
+
     }
   h1{
     text-align: center;
     color:#3333FF;
   }
+  body{
+    /*background-color: #CCCCCC;*/
+    background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
 
+  }
   .myform{
     color: white;
     width: 50%;
@@ -71,7 +77,7 @@
     <h1>Login</h1>
     <div class="container">
     <div class="row">
-      <form class="form-login" action="#">
+      <form class="form-login">
         <div class="col-md-6 row-block">
             <a href="http://www.facebook.com" class="btn btn-facebook btn-block">Login with Facebook</a>
           </div>
@@ -82,22 +88,22 @@
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Password" required />
           </div>
+          <div class="form-group">
           <label class="checkbox">
             <input type="checkbox" value="remember-me" />
             Keep me signed in
           </label>
+        </div>
+          <button class="btn btn-lg btn-block silver-bg" type="submit">
+            <a href="waves_list">Login</a></button>
         </form>
-        <button type="submit" >Login</button>
 
-        <button class="btn btn-lg btn-block silver-bg" type="submit">
-          <a href="waves_list">Login</a></button>
+
           <h2>OR</h2>
-        </form>
-        <button id="Signupbutton"class="btn btn-lg btn-block blue-bg" type="submit">
-          Sign Up</button><br><br><br>
-          <button id="profilebutton" class="btn btn-lg btn-block blue-bg" type="submit">
-            Create Profile</button>
-          </form>
+        <a id="Signupbutton" class="btn btn-lg btn-block blue-bg" href="{% url 'signup' %}">
+          Sign Up</a><br><br><br>
+          <a id="profilebutton" class="btn btn-lg btn-block blue-bg" href="{% url ''%}">
+            Create Profile</a>
 </div>
   {% endblock %}
   </body>

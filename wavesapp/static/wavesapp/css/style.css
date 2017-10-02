@@ -3,7 +3,8 @@ body{
 }
 .navbar{
   padding: 20px;
-  background-color: dodgerblue;
+  /*background-color: dodgerblue;*/
+  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;
