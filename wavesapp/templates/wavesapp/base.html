@@ -17,9 +17,13 @@
   <div class="container">
     <a class="navbarbrand" href="{% url 'home' %}" >HOME</a>
 <div class="navbar-right">
-    <a class="navbarbrand" href="">Login</a>
-    <a class="navbarbrand" href=""><b>Sign Up</b></a>
+  {% if not user.is_authenticated %}
+    <a class="navbarbrand" href="{% url 'login' %}">Login</a>
+    <a class="navbarbrand" href="{% url 'signup' %}"><b>Sign Up</b></a>
+  {% else %}
     <a class="navbarbrand" href=""><b>Write a review<b></a>
+    <a class="navbarbrand" href="{% url 'logout' %}"><b>Logout<b></a>
+  {% endif %}
     <a class="navbarbrand" href=""><b>Promotion<b></a>
   </div>
 </div>
