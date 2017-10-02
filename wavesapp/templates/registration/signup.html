@@ -1,0 +1,78 @@
+{%load staticfiles%}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
+    <style media="screen">
+body{
+  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
+  /*background-color: #CCCCCC;*/
+}
+    #row1{
+      background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
+      background-size: auto;
+      border-radius: 5px;
+      margin:20px;
+      text-align: center;
+      padding: 100px;
+            }
+    h1{
+      text-align: center;
+      color:#3333FF;
+    }
+
+    .myform{
+      color: white;
+      width: 50%;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      display: inline-block;
+        }
+    .fieldWrapper{
+      margin: 20px;
+      display: inline-table;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" id="row1">
+        <h1>Sign Up</h1>
+        <form class="myform" action="/signup/" method="post">
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="form-group">
+            {{ field.errors }}
+            {% render_field field placeholder=field.label class='form-control' %}
+            {% if field.help_text %}
+            {% endif %}
+          </div>
+          {% endfor %}
+            <input type="submit" name="" value="Register" style="color:white;background-color:#cccccc;border-color:#9999FF;width:300px;height:30px;border-radius:5px"/>
+            <h2>OR</h2>
+            <input type="submit" name="" value="Create Profile" style="color:white;background-color:#9999FF;border-color:#cccccc;width:300px;height:30px;border-radius:5px"/>
+        </form>
+      </div>
+        <div class="row">
+          <div class="col-md-4" id="footer1">
+          <h2>ABOUT US</h2>
+            <a class="info" href="">About waves direct</a><br>
+            <a  class="info" href="">Terms Of Service</a><br>
+            <a class="info" href="">Privacy Policy</a>
+          </div>
+            <div class="col-md-4" id="footer3">
+            <h2>DISCOVER</h2>
+            <a class="info" href="">Waves Blog</a><br>
+            <a class="info" href="">Developers</a><br></a>
+          </div>
+          <div class="col-md-4" id="footer2" style="">
+            &#169 2017 Waves Direct
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
