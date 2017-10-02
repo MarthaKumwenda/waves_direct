@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.db import migrations, models
 
 
 # Create your models here.
@@ -27,7 +28,7 @@ class Profile(models.Model):
 class Service(models.Model):
     class Meta:
         verbose_name_plural = 'Services'
-    
+
     service_type = models.CharField(max_length = 500)
     price = models.DecimalField(
                                 max_digits=6,
@@ -43,3 +44,12 @@ class Appointment(models.Model):
 
     # name = models.ForeignKey(User)
     # service_type = models.ForeignKey(Service)
+
+class Migration(migrations.Migration):
+
+    dependencies = [("migrations", "0001_initial")]
+
+    operations = [
+        migrations.DeleteModel("Tribble"),
+        migrations.AddField("Author", "rating", models.IntegerField(default=0)),
+    ]

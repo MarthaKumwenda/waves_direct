@@ -1,0 +1,75 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Profile</title>
+  </head>
+  <body>
+    {% csrf_token %}
+    <table class="table">
+      <h3>Login Details</h3>
+     <tr>
+         <td><input name="firstname"
+                     type="text" class="form-control" placeholder="First Name"></td>
+     </tr>
+     <tr>
+         <td><input name="lastname"
+                     type="text" class="form-control" placeholder="Last Name"></td>
+     </tr>
+     <tr>
+         <td><input name="email"
+                     type="text" class="form-control" placeholder="Email"></td>
+     </tr>
+     <tr>
+         <td><input name="password"
+                             type="password" class="form-control" placeholder="Password"></td>
+     </tr>
+   </table>
+
+    <table class="table">
+    <h3>Business Details</h3>
+     <tr>
+       <td><input name="companyname"
+         type="text" class="form-control" placeholder="Company Name"></td>
+     </tr>
+     <tr>
+     <td><input name="email"
+        type="text" class="form-control" placeholder="Email"></td>
+     </tr>
+     <tr>
+     <td><input name="phonenumber"
+        type="text" class="form-control" placeholder="Phone Number"></td>
+     </tr>
+     <tr>
+     <td><input name="location"
+        type="text" class="form-control" placeholder="Location"></td>
+     </tr>
+     <tr>
+       <td><label>Business Type</label>
+      </tr>
+      <tr>
+        <td><label>Barbershop</label>
+          <input name="check" value="submit"
+          type="checkbox" class="form-control"></td>
+        </tr>
+          <td><label>freelance</label>
+        <input name="check" value="submit"
+        type="checkbox" class="form-control"></td>
+      </tr>
+      <td><label>Salon</label>
+        <input name="check" value="submit"
+        type="checkbox" class="form-control"></td>
+     </tr>
+   </table>
+   {% if form.errors %}
+     <p class=" label label-danger">
+         Your username and password didn't match.
+         Please try again.
+     </p>
+  {% endif %}
+  <input type="submit" value="CREATE"
+          class="btn btn-primary pull-right" />
+  <input type="hidden" name="next" value="{{ next }}" />
+  </body>
+</html>

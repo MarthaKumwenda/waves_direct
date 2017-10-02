@@ -1,104 +1,42 @@
 {%load staticfiles%}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Login</title>
-    <style media="screen">
-    body{
-      background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
-      background-size: auto;
-      border-radius: 5px;
-      border-radius: 5px;
-      margin-top:40px;
-      text-align: center;
-      margin:20px;
-      text-align: center;
-      color: white;
-    }
-  h1{
-    text-align: center;
-    color:#3333FF;
-  }
+{% block title %}Login{% endblock %}
 
-  .myform{
-    color: white;
-    width: 50%;
-    padding: 12px 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-  }
-  fieldWrapper{
-    margin: 20px;
-    display: inline-table;
-    }
-    .btn-facebook
-  {
-      background-color: #3F639E;
-      border-style: solid;
-      border-color:#3F639E;
-      border-radius: 5px;
-      border-width: medium;
-      color: #fff;
-      font-weight:bold;
-      text-decoration: none;
-  }
-  .blue-bg
-{
-    background-color: #3F639E;
-    border-color: #3F639E;
-    border-radius: 5px;
-    color: #fff;
-    left: 500px;
-    font-weight:bold;
-    position: absolute;
-    width: 300px;
-}
-.silver-bg{
-  background-color: #CCCCCC;
-  border-color:#CCCCCC;
-  border-radius: 5px;
-  color: white;
-  margin: 30px;
-  width: 300px;
-  height: 30px;
+{% block content %}
+    <div id="content-container" class="container p-none">
+      <div class="col-md-6 row-block">
+          <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-block">Login with Facebook</a>
+        </div>
+        <h2>OR</h2>
+      <div class="lgn-container col-lg-8">
+        <form id="login-form" method="post">
 
-}
-    </style>
-  </head>
-  <body>
-    {% block content %}
-    <h1>Login</h1>
-    <div class="container">
-    <div class="row">
-      <form class="form-login" action="#">
-        <div class="col-md-6 row-block">
-            <a href="http://www.facebook.com" class="btn btn-facebook btn-block">Login with Facebook</a>
-          </div>
+          {% csrf_token %}
+          <table class="table">
+           <tr>
+               <td><input id="id_username" name="username"
+                           type="text" class="form-control" placeholder="Username"></td>
+           </tr>
+           <tr>
+               <td><input id="id_password" name="password"
+                                   type="password" class="form-control" placeholder="Password"></td>
+           </tr>
+         </table>
+         {% if form.errors %}
+           <p class=" label label-danger">
+               Your username and password didn't match.
+               Please try again.
+           </p>
+        {% endif %}
+
+          <input type="submit" value="Login"
+                  class="btn btn-primary pull-right" />
+          <input type="hidden" name="next" value="{{ next }}" />
           <h2>OR</h2>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email" required autofocus />
+          <div class="col-md-6 row-block">
+            <a href="{% url 'signup' %}"> Signup</a>
+            <!-- <a href="{% url 'signup' %}"> Creat Profile</a> -->
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required />
-          </div>
-          <label class="checkbox">
-            <input type="checkbox" value="remember-me" />
-            Keep me signed in
-          </label>
-        </form>
-        <button type="submit" >Login</button>
-
-        <button class="btn btn-lg btn-block silver-bg" type="submit">
-          <a href="waves_list">Login</a></button>
-          <h2>OR</h2>
-        </form>
-        <button id="Signupbutton"class="btn btn-lg btn-block blue-bg" type="submit">
-          Sign Up</button><br><br><br>
-          <button id="profilebutton" class="btn btn-lg btn-block blue-bg" type="submit">
-            Create Profile</button>
-          </form>
-</div>
-  {% endblock %}
-  </body>
-</html>
+      </form>
+    </div>
+    </div>
+{% endblock content %}
