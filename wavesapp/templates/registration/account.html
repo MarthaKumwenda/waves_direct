@@ -4,26 +4,40 @@
   <head>
     <meta charset="utf-8">
     <title>Create Profile</title>
+    <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
+    <style media="screen">
+    body{
+      padding:60px 400px 20px 400px;
+    }
+    h1{
+      color: lightgrey;
+      text-align: center;
+    }
+
+    </style>
   </head>
   <body>
+    <div class="jumbotron">
+    <h1>CREATE YOUR PROFILE</h1>
     {% csrf_token %}
     <table class="table">
       <h3>Login Details</h3>
      <tr>
-         <td><input name="firstname"
-                     type="text" class="form-control" placeholder="First Name"></td>
+        <td><input name="firstname"
+        type="text" class="form-control" placeholder="First Name"></td>
      </tr>
      <tr>
-         <td><input name="lastname"
-                     type="text" class="form-control" placeholder="Last Name"></td>
+        <td><input name="lastname"
+         type="text" class="form-control" placeholder="Last Name"></td>
      </tr>
      <tr>
-         <td><input name="email"
-                     type="text" class="form-control" placeholder="Email"></td>
+      <td><input name="email"
+      type="text" class="form-control" placeholder="Email"></td>
      </tr>
      <tr>
-         <td><input name="password"
-                             type="password" class="form-control" placeholder="Password"></td>
+      <td><input name="password"
+        type="password" class="form-control" placeholder="Password"></td>
      </tr>
    </table>
 
@@ -51,25 +65,28 @@
       <tr>
         <td><label>Barbershop</label>
           <input name="check" value="submit"
-          type="checkbox" class="form-control"></td>
+          type="checkbox" ></td>
         </tr>
+        <tr>
           <td><label>freelance</label>
         <input name="check" value="submit"
-        type="checkbox" class="form-control"></td>
+        type="checkbox" ></td>
       </tr>
+      <tr>
       <td><label>Salon</label>
         <input name="check" value="submit"
-        type="checkbox" class="form-control"></td>
+        type="checkbox" ></td>
      </tr>
-   </table>
-   {% if form.errors %}
-     <p class=" label label-danger">
-         Your username and password didn't match.
-         Please try again.
-     </p>
-  {% endif %}
-  <input type="submit" value="CREATE"
-          class="btn btn-primary pull-right" />
-  <input type="hidden" name="next" value="{{ next }}" />
+    </table>
+    {% if form.errors %}
+      <p class=" label label-danger">
+          Your username and password didn't match.
+          Please try again.
+      </p>
+     {% endif %}
+     <button type="submit" class="btn btn-primary" name="button"
+       style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
+       Create </button>
+  </div>
   </body>
 </html>

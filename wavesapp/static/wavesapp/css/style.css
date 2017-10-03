@@ -1,4 +1,4 @@
-/*.navbar{
+.navbar{
     background-color:dodgerblue;
     padding:20px;
     padding-bottom: 30px;
@@ -14,13 +14,13 @@ h1{
   font-weight: bolder;
   color: white;
 }
-.form{
+.{
     background-image:url("images.png");
     background-repeat: no-repeat;
     background-size: 115% 200%;*/
   /*background-attachment: fixed;*/
 }
-/*
+
 
 footer {
   position: bottom;
