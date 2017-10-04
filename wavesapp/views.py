@@ -6,9 +6,6 @@ from django.http import HttpResponse
 from wavesapp.forms import SignupForm
 from django.contrib.auth import login,authenticate
 
-import operator
-from django.db.models import Q
-
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
@@ -28,7 +25,16 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
-
-def search(request):
-        query = request.GET.get('q','')
-        return render(request,'wavesapp/results.html', {'query':query})
+def account(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('waves_list')
+    else:
+        form = SignupForm()
+    return render(request, 'registration/account.html', {'form': form})
