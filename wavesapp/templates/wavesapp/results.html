@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+body{
+    background:url("wavesapp/images/images.png"%) no-repeat center center;
+}
+    </style>
+  </head>
+  <body>
+
+{% extends "wavesapp/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="search">
+  Results found:{{ query }}
+</div>
+{% endblock %}
+
+
+</body>
+</html>
