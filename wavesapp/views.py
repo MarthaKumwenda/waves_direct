@@ -38,10 +38,8 @@ def account(request):
     else:
         form = SignupForm()
     return render(request, 'registration/account.html', {'form': form})
-<<<<<<< HEAD
+
 
 def search(request):
     query = request.GET.get('q','')
     return render(request,'wavesapp/results.html', {'query':query})
-=======
->>>>>>> bccdf9af03a53534aa8c0a43a5ecc0ce2c80ce15
