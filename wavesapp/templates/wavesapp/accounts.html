@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Create Profile</title>
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'wavesapp/js/bootstrap.js' %}">
     <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
     <style media="screen">
     body{
@@ -84,7 +85,7 @@
           Please try again.
       </p>
      {% endif %}
-     <a href="{% url 'wavesapp/profile' %}">
+     <a href="{% url 'profile' %}">
      <button type="submit" class="btn btn-primary" name="button"
        style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
        Create </button> </a>

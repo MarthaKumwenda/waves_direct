@@ -18,12 +18,28 @@ class Barber_Salon(models.Model):
          return self.name
 
 class Profile(models.Model):
-    bio = models.CharField(max_length=32)
-    user = models.OneToOneField(
-    User,
-    on_delete = models.CASCADE,
-    null=True
+    SALON_OWNER = 1
+    BARBERSHOP_OWNER = 2
+    FREELANCE = 3
+    ROLE_CHOICES = (
+        (SALON_OWNER, 'Salon_Owner'),
+        (BARBERSHOP_OWNER, 'Barbershop_Owner'),
+        (FREELANCE, 'Freelance'),
     )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    company_name = models.CharField(max_length = 30, default=None, null=True)
+    location = models.CharField(max_length=30, blank=True)
+    phone = models.CharField(max_length=30, blank=True)
+    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
+
+    def __str__(self):  # __unicode__ for Python 2
+        return self.user.username
+def create_profile(sender, **kwargs):
+    user = kwargs["instance"]
+    if kwargs["created"]:
+        profile = Profile(user=user)
+        profile.save()
+        post_save.connect(create_profile, sender=User)
 
 class Service(models.Model):
     class Meta:
@@ -35,6 +51,15 @@ class Service(models.Model):
                                 decimal_places=2
                                 )
     name = models.ForeignKey(User)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, related_name='user')
+    website = models.URLField(default='', blank=True)
+    bio = models.TextField(default='', blank=True)
+    phone = models.CharField(max_length=20, blank=True, default='')
+    city = models.CharField(max_length=100, default='', blank=True)
+    country = models.CharField(max_length=100, default='', blank=True)
+    organization = models.CharField(max_length=100, default='', blank=True)
+
 
 
 
@@ -42,8 +67,6 @@ class Appointment(models.Model):
     name_of_client = models.CharField(max_length = 50)
     time_of_appointment = models.DateTimeField()
 
-    # name = models.ForeignKey(User)
-    # service_type = models.ForeignKey(Service)
 
 class Migration(migrations.Migration):
 
