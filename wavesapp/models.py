@@ -9,14 +9,6 @@ from django.db import migrations, models
 
 # Create your models here.
 
-class Barber_Salon(models.Model):
-    name = models.CharField(max_length = 30)
-    phone = models.CharField(max_length = 15)
-    address = models.TextField()
-
-    def __str__(self):
-         return self.name
-
 class Profile(models.Model):
     SALON_OWNER = 1
     BARBERSHOP_OWNER = 2
@@ -30,6 +22,8 @@ class Profile(models.Model):
     company_name = models.CharField(max_length = 30, default=None, null=True)
     location = models.CharField(max_length=30, blank=True)
     phone = models.CharField(max_length=30, blank=True)
+    address = models.CharField(max_length=100, blank=True)
+    email = models.EmailField(max_length=30, blank=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
 
     def __str__(self):  # __unicode__ for Python 2
@@ -51,15 +45,6 @@ class Service(models.Model):
                                 decimal_places=2
                                 )
     name = models.ForeignKey(User)
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='user')
-    website = models.URLField(default='', blank=True)
-    bio = models.TextField(default='', blank=True)
-    phone = models.CharField(max_length=20, blank=True, default='')
-    city = models.CharField(max_length=100, default='', blank=True)
-    country = models.CharField(max_length=100, default='', blank=True)
-    organization = models.CharField(max_length=100, default='', blank=True)
-
 
 
 

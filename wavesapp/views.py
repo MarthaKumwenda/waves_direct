@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from wavesapp.forms import SignupForm
@@ -9,7 +9,7 @@ from django.contrib.auth import login,authenticate
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import UserProfile
+from .models import Profile
 from .forms import UserForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
@@ -18,8 +18,9 @@ from django.core.exceptions import PermissionDenied
 def home(request):
     return render(request,'wavesapp/base.html',{})
 
-def profile(request):
-    return render(request, 'wavesapp/profile.html',{})
+def profile_detail(request, pk):
+    profile = get_object_or_404(Profile, pk=pk)
+    return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
 
 def signup(request):
     if request.method == 'POST':
@@ -34,7 +35,8 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
-def account(request):
+
+def profile(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -43,13 +45,23 @@ def account(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('profile')
+            return redirect('profile_detail')
     else:
         form = SignupForm()
-    return render(request, 'registration/account.html', {'form': form})
+    return render(request, 'wavesapp/profile.html', {'form': form})
 
 def search(request):
-    query = request.GET.get('q','')
+    role = request.GET.get('role', None)
+    query = request.GET.get('q',None)
+    if role:
+        # filter by role
+        UserProfile.objects.filter(role = role)
+    elif query:
+        # filter by name
+        pass
+    else:
+        # Get all
+        pass
     return render(request,'wavesapp/results.html', {'query':query})
 
 @login_required() # only logged in users should access this
@@ -62,7 +74,7 @@ def edit_user(request):
     user_form = UserForm(instance=user)
 
     # The sorcery begins from here, see explanation below
-    ProfileInlineFormset = inlineformset_factory(User, UserProfile, fields=('website', 'bio', 'phone', 'city', 'country', 'organization'))
+    ProfileInlineFormset = inlineformset_factory(User, Profile, fields=('company_name', 'location', 'email', 'phone'))
     formset = ProfileInlineFormset(instance=user)
 
     if request.user.is_authenticated() and request.user.id == user.id:
@@ -77,9 +89,9 @@ def edit_user(request):
                 if formset.is_valid():
                     created_user.save()
                     formset.save()
-                    return HttpResponseRedirect('/accounts/profile/')
+                    return HttpResponseRedirect('/profile_detail/')
 
-        return render(request, "wavesapp/accounts.html", {
+        return render(request, "wavesapp/profile.html", {
             "noodle": pk,
             "noodle_form": user_form,
             "formset": formset,
