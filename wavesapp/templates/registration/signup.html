@@ -11,10 +11,14 @@
     <style media="screen">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3065d69030f09fb40c297c7acd38251fae13ae5e
 body{
   background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
   /*background-color: #CCCCCC;*/
 }
+<<<<<<< HEAD
 =======
     body{
       background-color: #CCCCCC;
@@ -32,22 +36,31 @@ body{
       margin:20px;
       text-align: center;
       padding: 100px;
+=======
+#row1{
+  background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
+  background-size: auto;
+  border-radius: 5px;
+  margin:20px;
+  text-align: center;
+  padding: 100px;
+>>>>>>> 3065d69030f09fb40c297c7acd38251fae13ae5e
             }
-    h1{
-      text-align: center;
-      color:#3333FF;
-    }
+h1{
+  text-align: center;
+  color:#3333FF;
+  }
 
-    .myform{
-      color: white;
-      width: 50%;
-      padding: 12px 20px;
-      margin-bottom: 20px;
-      display: inline-block;
+.myform{
+  color: white;
+  width: 50%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: inline-block;
         }
-    .fieldWrapper{
-      margin: 20px;
-      display: inline-table;
+.fieldWrapper{
+  margin: 20px;
+    display: inline-table;
     }
   </style>
   </head>
@@ -74,7 +87,7 @@ body{
           {% endfor %}
             <input type="submit" name="" value="Register" style="color:white;background-color:#cccccc;border-color:#9999FF;width:300px;height:30px;border-radius:5px"/>
             <h2>OR</h2>
-            <a href="{% url 'account' %}"><button type="button" class="btn btn-primary" name="button"
+            <a href="{% url 'account_update' %}"><button type="button" class="btn btn-primary" name="button"
               style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px">
               Create Profile</button></a>
           </form>

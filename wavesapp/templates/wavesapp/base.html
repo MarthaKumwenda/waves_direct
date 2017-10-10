@@ -20,14 +20,15 @@
       <!-- <a href="#">Categories</a> -->
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Explore More</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{% url 'profile_detail' pk=user.id %}">Profile</a></li>
+            <li><a href="{% url 'account_update' %}">Account</a></li>
+            <li><a href="{% url 'logout'%}">Logout</a></li>
           </ul>
         </ul>
-
+        <p class="navbar-text">Signed in as <a href="#" class="navbar-link">{{user.username}}</a></p>
   <div class="navbar-right">
     {% if user.is_not_authenticated %}
+
           <a class="navbarbrand" href="{% url 'login' %}">Login</a>
           <a class="navbarbrand" href="{% url 'signup' %}"><b>Sign Up</b></a>
     {% endif %}
