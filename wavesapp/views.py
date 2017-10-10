@@ -50,7 +50,6 @@ def profile(request):
         form = SignupForm()
     return render(request, 'wavesapp/profile.html', {'form': form})
 
-
 def search(request):
     role = request.GET.get('role', None)
     query = request.GET.get('q',None)
