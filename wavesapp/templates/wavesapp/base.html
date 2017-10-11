@@ -7,62 +7,95 @@
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
     <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body>
+<body>
+
 <nav class="navbar navbar-default">
   <div class="container">
-    <a class="navbarbrand" href="{% url 'home' %}" >HOME</a>
-    </div>
-   </nav>
+    <!-- <a class="navbarbrand" href="{% url 'home' %}" >HOME</a> -->
+    <ul id="menu">
+    <li>
+      <a class="navbarbrand" href="" >Menu</a>
+      <!-- <a href="#">Categories</a> -->
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.profile %}
+            <li><a href="{% url 'profile_detail' pk=user.id %}">Profile</a></li>
+            {% endif %}
+            <li><a href="{% url 'profile_update' %}">Account</a></li>
+            <li><a href="{% url 'logout'%}">Logout</a></li>
+          </ul>
+        </ul>
+        <p class="navbar-text">Signed in as <a href="#" class="navbar-link">{{user.username}}</a></p>
+  <div class="navbar-right">
+    {% if user.is_not_authenticated %}
 
-   <!-- END OF NAV -->
+          <a class="navbarbrand" href="{% url 'login' %}">Login</a>
+          <a class="navbarbrand" href="{% url 'signup' %}"><b>Sign Up</b></a>
+    {% endif %}
+    <a class="navbarbrand" href=""><b>Write a review<b></a>
+    <!-- <a class="navbarbrand" href=""><b>Promotion<b></a> -->
+  </div>
+</div>
+</nav>
+
+
+<!-- END OF NAV -->
+{% block content %}
+<div class="pic">
 <div class="container">
-   <form class="form">
+<form class="form" action="{% url 'search' %}" role="search" method="get" accept-charset="utf-8" style=" height:500px;">
   <div class="row">
       <h1>Waves Direct</h1>
       <div class="searchbar">
-        <input class="search" type="text" placeholder="search">
-        <button class="btn.btn-primary" type='search'>Enter</button>
+          <input class="search" id="btn"type="text" placeholder="search" name="q">
+          <button href="{% url 'search' %}" class="button" id="txtSearch"type='search'>Enter</button>
       </div>
       <div class="cent" style="padding-top:10px;">
-      <a class="ref" href="" style="margin-right:20px;">Salons</a>
-      <a class="ref" href="" style="margin-left:20px;">Barbershop</a>
-      <a cl="ref" href="" style="margin-left:40px;">Freelancers</a>
+      <a class="ref" href="" style="margin-right:20px; color:black;">Salons</a>
+      <a class="ref" href="" style="margin-left:20px; color:black;">Barbershop</a>
+      <a class="ref" href="" style="margin-left:40px; color:black;">Freelancers</a>
       </div>
     </div>
 </form>
 </div>
+<<<<<<< HEAD
  <!-- END OF  DIV CLASS PIC -->
+=======
+</div>
+{% endblock %}
+<!-- END OF  DIV CLASS PIC-->
+>>>>>>> 9800ea02600a86ce9d8e296a78f4767857d92438
 
 <div class="about">
  <footer class="footer">
-<div class="container/*padding: 8cm;*/">
+   <div class="container" style="padding:20px;">
       <div class="row">
       <div class="col-md-4">
         <h2>ABOUT US</h2>
         <a class="info" href="">About waves direct</a><br>
-        <a  class="info" href="">Terms Of Service</a><br>
+        <a  class="info" href="terms.html">Terms Of Service</a><br>
         <a class="info" href="">Privacy Policy</a><br>
       </div>
       <div class="col-md-4">
+        <form class="form-horizontal">
+           <div class="form-group">
        <h2>DISCOVER</h2>
-       <a class="info"href="">Waves Blog</a><br>
+       <a class="info"href="">Waves Direct Blog</a><br>
        <a class="info"href="">Developers</a><br>
-       <form class="form-horizontal">
-         <div class="form-group">
          </div>
-      <div class="form-group">
-
-      </div>
-    </form>
-   </div>
+       </form>
+    </div>
+    </div>
+    </div>
   </footer>
 </div>
 </div>
- </div>
-END OF FOOTER
- <script src="{% static 'wavesapp/jquery-3.2.1.js' %}"></script>
- <script src="{% static 'wavesapp/bootstrap.js' %}"></script>
- <script src="{% static 'wavesapp/script.js' %}"></script>
-  </body>
-  </html>
+
+<!-- END OF FOOTER-->
+<script src="{% static 'wavesapp/jquery-3.2.1.js' %}"></script>
+<script src="{% static 'wavesapp/bootstrap.js' %}"></script>
+<script src="{% static 'wavesapp/script.js' %}"></script>
+</body>
+</html>
