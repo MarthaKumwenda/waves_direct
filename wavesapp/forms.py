@@ -17,7 +17,6 @@ class SignupForm(UserCreationForm):
 
 class ProfileForm(forms.ModelForm):
     company_name = forms.CharField(max_length=32,required=True)
-    photo = forms.ImageField()
     email = forms.EmailField(required=True,max_length=100)
     phone = forms.CharField(max_length = 15)
     location = forms.CharField(max_length = 15)
