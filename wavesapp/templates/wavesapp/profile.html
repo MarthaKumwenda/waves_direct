@@ -1,4 +1,5 @@
 {%load staticfiles%}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,76 +20,32 @@
     </style>
   </head>
   <body>
+
     <div class="jumbotron">
     <h1>CREATE YOUR PROFILE</h1>
+    <form method="post">
     {% csrf_token %}
-    <table class="table">
-      <h3>Login Details</h3>
-     <tr>
-        <td><input name="firstname"
-        type="text" class="form-control" placeholder="First Name"></td>
-     </tr>
-     <tr>
-        <td><input name="lastname"
-         type="text" class="form-control" placeholder="Last Name"></td>
-     </tr>
-     <tr>
-      <td><input name="email"
-      type="text" class="form-control" placeholder="Email"></td>
-     </tr>
-     <tr>
-      <td><input name="password"
-        type="password" class="form-control" placeholder="Password"></td>
-     </tr>
-   </table>
-
-    <table class="table">
-    <h3>Business Details</h3>
-     <tr>
-       <td><input name="companyname"
-         type="text" class="form-control" placeholder="Company Name"></td>
-     </tr>
-     <tr>
-     <td><input name="email"
-        type="text" class="form-control" placeholder="Email"></td>
-     </tr>
-     <tr>
-     <td><input name="phonenumber"
-        type="text" class="form-control" placeholder="Phone Number"></td>
-     </tr>
-     <tr>
-     <td><input name="location"
-        type="text" class="form-control" placeholder="Location"></td>
-     </tr>
-     <tr>
-       <td><label>Business Type</label>
-      </tr>
-      <tr>
-        <td><label>Barbershop</label>
-          <input name="check" value="submit"
-          type="checkbox" ></td>
-        </tr>
-        <tr>
-          <td><label>freelance</label>
-        <input name="check" value="submit"
-        type="checkbox" ></td>
-      </tr>
-      <tr>
-      <td><label>Salon</label>
-        <input name="check" value="submit"
-        type="checkbox" ></td>
-     </tr>
-    </table>
-    {% if form.errors %}
-      <p class=" label label-danger">
-          Your username and password didn't match.
-          Please try again.
-      </p>
-     {% endif %}
-     <a href="{% url 'profile_detail' pk=user.id %}">
-     <button type="submit" class="btn btn-primary" name="button"
-       style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
-       Create </button> </a>
-  </div>
+    <h3>Login Details</h3>
+    {% for field in form %}
+    <div class="form-group">
+      {{ field.errors }}
+      {% render_field field placeholder=field.label class='form-control' %}
+      {% if field.help_text %}
+      {% endif %}
+    </div>
+      {% endfor %}
+      <h3>Business Details</h3>
+    {% for field in profile_form %}
+    <div class="form-group">
+      {{ field.errors }}
+      {% render_field field placeholder=field.label class='form-control' %}
+      {% if field.help_text %}
+      {% endif %}
+    </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary" name="button"
+        style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
+        Create </button>
+  </form>
   </body>
-</html>
+</html> 
