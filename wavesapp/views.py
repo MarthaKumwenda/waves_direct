@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render,redirect
+from .models import Barber_Salon
+from django.shortcuts import redirect
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 from wavesapp.forms import SignupForm
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth import login,authenticate
 
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
 def waves_list(request):
-    return render(request, 'wavesapp/waves_list.html',{})
+    posts = Barber_Salon.objects.all()
+
+    return render(request, 'wavesapp/waves_list.html',{'posts': posts})
 
 def signup(request):
     if request.method == 'POST':
