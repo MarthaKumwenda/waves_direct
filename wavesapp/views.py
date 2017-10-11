@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from wavesapp.forms import SignupForm
+from wavesapp.forms import PopupForm
 from django.contrib.auth import login,authenticate
 
 import operator
@@ -28,6 +29,16 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+def reserve(request):
+    if request.method == 'POST':
+         appointment_form = PopupForm(request.POST)
+         if appointment_form.is_valid():
+            appointment_form.save()
+            return redirect('home')
+    else:
+        appointment_form = PopupForm()
+    return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form})
 
 def search(request):
         query = request.GET.get('q','')

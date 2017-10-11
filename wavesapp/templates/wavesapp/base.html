@@ -16,32 +16,33 @@
   <div class="container">
     <!-- <a class="navbarbrand" href="{% url 'home' %}" >HOME</a> -->
     <ul id="menu">
-    <li>
-      <a class="navbarbrand" href="" >Menu</a>
+      <li>
+        <a class="navbarbrand" href="" >Menu</a>
       <!-- <a href="#">Categories</a> -->
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Explore More</a></li>
+            <li><a href="{% url 'reserve' %}">Appoinments</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
         </ul>
-<div class="navbar-right">
+  <div class="navbar-right">
     <a class="navbarbrand" href="{% url 'login' %}">Login</a>
     <a class="navbarbrand" href="{% url 'signup' %}"><b>Sign Up</b></a>
     <a class="navbarbrand" href=""><b>Write a review<b></a>
     <!-- <a class="navbarbrand" href=""><b>Promotion<b></a> -->
   </div>
-</div>
+ </div>
 </nav>
 
 
 <!-- END OF NAV -->
 {% block content %}
 <div class="pic">
-<div class="container">
-<form class="form" action="{% url 'search' %}" role="search" method="get" accept-charset="utf-8" style=" height:500px;">
-  <div class="row">
+ <div class="container">
+  <form class="form" action ="{% url 'search' %}" role="search" method="get" accept-charset="utf-8" style=" height:500px;">
+   <div class="row">
       <h1>Waves Direct</h1>
       <div class="searchbar">
           <input class="search" id="btn"type="text" placeholder="search" name="q">
@@ -53,33 +54,33 @@
       <a class="ref" href="" style="margin-left:40px; color:black;">Freelancers</a>
       </div>
     </div>
-</form>
-</div>
+  </form>
+ </div>
 </div>
 {% endblock %}
 <!-- END OF  DIV CLASS PIC-->
 
-<div class="about">
+<div class="about" style="background-color:#f0Ded3;">
  <footer class="footer">
    <div class="container" style="padding:20px;">
       <div class="row">
       <div class="col-md-4">
         <h2>ABOUT US</h2>
         <a class="info" href="">About waves direct</a><br>
-        <a  class="info" href="terms.html">Terms Of Service</a><br>
+        <a  class="info" href="">Terms Of Service</a><br>
         <a class="info" href="">Privacy Policy</a><br>
       </div>
-      <div class="col-md-4">
+       <div class="col-md-4">
         <form class="form-horizontal">
            <div class="form-group">
-       <h2>DISCOVER</h2>
-       <a class="info"href="">Waves Direct Blog</a><br>
-       <a class="info"href="">Developers</a><br>
-         </div>
-       </form>
+             <h2>DISCOVER</h2>
+             <a class="info"href="">Waves Direct Blog</a><br>
+             <a class="info"href="">Developers</a><br>
+       </div>
+      </form>
     </div>
-    </div>
-    </div>
+   </div>
+  </div>
   </footer>
 </div>
 </div>
