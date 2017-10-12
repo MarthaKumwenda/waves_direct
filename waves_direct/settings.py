@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -140,3 +141,6 @@ LOGOUT_REDIRECT_URL ='login'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '329959290810682'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '245aeef8d14124042a31e2190cd0dde4'  # App Secret
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

@@ -19,7 +19,7 @@ class Profile(models.Model):
         (FREELANCE, 'Freelance'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    uploadphoto = models.FileField(upload_to="wavesapp/profile.html", default=None, null=True)
+    uploadphoto = models.FileField(upload_to="profile_photos", default=None, null=True)
     company_name = models.CharField(max_length = 30, default=None, null=True)
     location = models.CharField(max_length=30, blank=True)
     phone = models.CharField(max_length=30, blank=True)
