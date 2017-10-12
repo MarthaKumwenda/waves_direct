@@ -1,18 +1,47 @@
 
+/*for sign up*/
+
+#row1{
+  background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
+  background-size: auto;
+  border-radius: 5px;
+  margin:20px;
+  text-align: center;
+  padding: 100px;
+            }
+h1{
+  text-align: center;
+  color:#3333FF;
+  }
+
+.myform{
+  color: white;
+  width: 50%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+        }
+.fieldWrapper{
+  margin: 20px;
+    display: inline-table;
+    }
+
+
+
+
+
+
+
+
+
+
 body{
   /*background-color: lightgrey;*/
   background-color:#f0Ded3;
 }
 .navbar{
   padding: 20px;
-  /*background-color: dodgerblue;*/
-  /*background: -webkit-linear-gradient(dodgerblue,#CCCCCC);*/
-<<<<<<< HEAD
-  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
-=======
-  /*background-color: dodgerblue;*/
   background: -webkit-linear-gradient(dodgerblue,#f0Ded3);
->>>>>>> fe84ba0658ad9511d3026edcd3debe84f5a9ed54
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;
@@ -167,11 +196,6 @@ img {
   border-right: 5px solid transparent;
   border-bottom: 8px solid #444;
 }
-<<<<<<< HEAD
-=======
-
-
-
 
 /*image slider*/
 
@@ -352,4 +376,3 @@ html {
 .wrapper .column:nth-child(13) .inner {
   background-image: url('https://igcdn-photos-d-a.akamaihd.net/hphotos-ak-xap1/t51.2885-15/10483455_592335754230795_537719826_n.jpg');
 }
->>>>>>> fe84ba0658ad9511d3026edcd3debe84f5a9ed54

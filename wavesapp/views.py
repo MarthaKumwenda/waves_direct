@@ -3,14 +3,9 @@ from __future__ import unicode_literals
 from django.shortcuts import redirect
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-<<<<<<< HEAD
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from wavesapp.forms import SignupForm, ProfileForm
-=======
-from wavesapp.forms import SignupForm
-from wavesapp.forms import PopupForm
->>>>>>> fe84ba0658ad9511d3026edcd3debe84f5a9ed54
+from wavesapp.forms import SignupForm, ProfileForm, PopupForm
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -45,7 +40,6 @@ def signup(request):
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
-<<<<<<< HEAD
 def profile(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -65,7 +59,7 @@ def profile(request):
         form = SignupForm()
         profile_form = ProfileForm()
     return render(request, 'wavesapp/profile.html', {'form': form, 'profile_form': profile_form})
-=======
+
 def reserve(request):
     if request.method == 'POST':
          appointment_form = PopupForm(request.POST)
@@ -75,7 +69,7 @@ def reserve(request):
     else:
         appointment_form = PopupForm()
     return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form})
->>>>>>> fe84ba0658ad9511d3026edcd3debe84f5a9ed54
+
 
 def search(request):
     role = request.GET.get('role', None)
