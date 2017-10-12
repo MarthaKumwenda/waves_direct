@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from .models import Barber_Salon
 from django.shortcuts import redirect
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
@@ -18,10 +17,9 @@ from django.core.exceptions import PermissionDenied
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
-def waves_list(request):
-    posts = Barber_Salon.objects.all()
-
-    return render(request, 'wavesapp/waves_list.html',{'posts': posts})
+def profile_list(request, role=Profile.FREELANCE):
+    profiles = Profile.objects.filter(role=role)
+    return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)

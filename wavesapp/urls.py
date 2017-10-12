@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', views.home,name='home'),
-    url(r'^admin/',admin.site.urls),
+    url(r'^profile_list/(?P<role>\d+)/$', views.profile_list, name='profile_list'),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^login/$',auth_views.login,name='login'),
     url(r'^profile/$',views.profile,name='profile'),

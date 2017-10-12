@@ -1,0 +1,10 @@
+{% extends "wavesapp/base.html"%}
+
+{% block content %}
+    {% for profile in profiles %}
+        <div class="post">
+          <img src="{{ profile.uploadphoto.url }}" alt="">
+          <h1><a href="{% url 'profile_detail' pk=post.pk %}">{{ profile.company_name }}</a></h1>
+        </div>
+    {% endfor %}
+{% endblock content %}
