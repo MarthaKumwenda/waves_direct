@@ -22,7 +22,8 @@ class ProfileForm(forms.ModelForm):
     phone = forms.CharField(max_length = 15)
     location = forms.CharField(max_length = 15)
     address = forms.CharField(max_length = 100)
+    role = forms.ChoiceField(choices=Profile.ROLE_CHOICES)
 
     class Meta:
         model = Profile
-        fields = ['uploadphoto','company_name', 'email', 'phone', 'location', 'address']
+        fields = ['uploadphoto','company_name', 'email', 'phone', 'location', 'address','role']

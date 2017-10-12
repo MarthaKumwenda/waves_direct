@@ -39,7 +39,7 @@ def profile(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         profile_form = ProfileForm(request.POST , request.FILES)
-        if  form.is_valid() and profile_form.is_valid:
+        if  form.is_valid() and profile_form.is_valid():
             user = form.save()
             profile = profile_form.save(commit=False)
             profile.user = user
@@ -49,7 +49,6 @@ def profile(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            handle_uploaded_file(request.FILES['file'])
             return redirect('profile_detail',pk=user.id )
     else:
         form = SignupForm()

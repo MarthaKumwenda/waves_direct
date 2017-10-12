@@ -2,10 +2,11 @@
 
 {% block content %}
 <a href="#"> <h4>{{profile.company_name }} </h4></a> <br>
-{{profile.uploadphoto }}<br>
+<img src="{{profile.uploadphoto.url }}" alt="" /><br>
 {{profile.location }}<br>
 {{profile.address}}<br>
 {{profile.email }}<br>
 {{profile.phone }}<br>
+{{profile.role}}
 
 {% endblock %}
