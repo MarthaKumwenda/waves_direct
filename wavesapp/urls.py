@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^signup/$',views.signup,name='signup'),
     url(r'^search/$',views.search,name='search'),
     url(r'^profile/(?P<pk>\d+)/$', views.profile_detail, name='profile_detail'),
-    url(r'^profile/update/$', views.edit_user, name='account_update'),
+    url(r'^profile/update/$', views.edit_user, name='profile_update'),
 ]
