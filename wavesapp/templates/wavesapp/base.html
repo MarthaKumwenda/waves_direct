@@ -53,16 +53,20 @@
           <button href="{% url 'search' %}" class="button" id="txtSearch"type='search'>Enter</button>
       </div>
       <div class="cent" style="padding-top:10px;">
-      <a class="ref" href="" style="margin-right:20px; color:black;">Salons</a>
-      <a class="ref" href="" style="margin-left:20px; color:black;">Barbershop</a>
-      <a class="ref" href="" style="margin-left:40px; color:black;">Freelancers</a>
+      <a class="ref" href="{% url 'profile_list' role=1 %}" style="margin-right:20px; color:black;">Salons</a>
+      <a class="ref" href="{% url 'profile_list' role=2 %}" style="margin-left:20px; color:black;">Barbershop</a>
+      <a class="ref" href="{% url 'profile_list' role=3 %}" style="margin-left:40px; color:black;">Freelancers</a>
       </div>
     </div>
 </form>
 </div>
+
+ <!-- END OF  DIV CLASS PIC -->
+
 </div>
 {% endblock %}
 <!-- END OF  DIV CLASS PIC-->
+
 
 <div class="about">
  <footer class="footer">

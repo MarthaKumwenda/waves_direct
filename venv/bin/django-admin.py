@@ -1,4 +1,4 @@
-#!/home/manocap/Documents/BUPEMWEWA/DJANGO/venv/bin/python
+#!/home/mukakanga/Documents/waves-direct/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render,redirect, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from wavesapp.forms import SignupForm, ProfileForm
 from django.contrib.auth import login,authenticate
@@ -16,10 +17,14 @@ from django.core.exceptions import PermissionDenied
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
+def profile_list(request, role=Profile.FREELANCE):
+    profiles = Profile.objects.filter(role=role)
+    return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
     return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
+
 
 def signup(request):
     if request.method == 'POST':
