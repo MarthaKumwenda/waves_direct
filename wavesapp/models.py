@@ -49,10 +49,20 @@ class Service(models.Model):
     name = models.ForeignKey(User)
 
 
-
-class Appointment(models.Model):
-    name_of_client = models.CharField(max_length = 50)
+class Popup(models.Model):
+    client_name = models.CharField(max_length=60)
+    phone_number = models.CharField(max_length=30)
+    email = models.EmailField(max_length=100)
     time_of_appointment = models.DateTimeField()
+    due_date = models.DateTimeField()
+    request = models.CharField(max_length = 2000)
+
+
+    # class Meta:
+    #     model = Popup
+    #     fields = ('client_name','phone_number','email','time_of_appointment','request')
+
+
 
 
 class Migration(migrations.Migration):
