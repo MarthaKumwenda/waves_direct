@@ -16,6 +16,7 @@ class SignupForm(UserCreationForm):
         fields = ('username','first_name','last_name','email','password1','password2')
 
 class ProfileForm(forms.ModelForm):
+    uploadphoto = forms.FileField()
     company_name = forms.CharField(max_length=32,required=True)
     email = forms.EmailField(required=True,max_length=100)
     phone = forms.CharField(max_length = 15)
@@ -24,4 +25,4 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['company_name', 'email', 'phone', 'location', 'address']
+        fields = ['uploadphoto','company_name', 'email', 'phone', 'location', 'address']
