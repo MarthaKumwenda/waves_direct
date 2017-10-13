@@ -1,17 +1,17 @@
-{% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Waves</title>
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
+    <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
     <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <!-- <a class="navbarbrand" href="{% url 'home' %}" >HOME</a> -->
     <ul id="menu">
@@ -24,7 +24,7 @@
             <li><a href="{% url 'profile_detail' pk=user.id %}">Profile</a></li>
             {% endif %}
             <li><a href="{% url 'profile' %}">Account</a></li>
-            <li><a href="{% url 'reserve' %}">Appoinments</a></li>
+
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout'%}">Logout</a></li>
             {% endif %}
@@ -33,7 +33,7 @@
         {% if user.is_authenticated %}
         <p class="navbar-text">Signed in as <a href="#" class="navbar-link">{{user.username}}</a></p>
         {% else%}
-<div class="navbar-right">
+        <div class="navbar-right">
           <a class="navbarbrand" href="{% url 'login' %}">Login</a>
           <a class="navbarbrand" href="{% url 'signup' %}"><b>Sign Up</b></a>
 
@@ -65,7 +65,6 @@
 </div>
 {% endblock %}
 <!-- END OF  DIV CLASS PIC-->
-
 
 <div class="about">
 <div class="about" style="background-color:#f0Ded3;">
