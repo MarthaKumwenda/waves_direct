@@ -1,10 +1,31 @@
 {% extends "wavesapp/base.html"%}
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
+<link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
+
 
 {% block content %}
     {% for profile in profiles %}
-        <div class="post">
-          <img src="{{ profile.uploadphoto.url }}" alt="">
-          <h1><a href="{% url 'profile_detail' pk=post.pk %}">{{ profile.company_name }}</a></h1>
-        </div>
+    <div class="container">
+      <div class="row">
+        <hr>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-4">
+              <img src="{{ profile.uploadphoto.url }}" alt="my image" style="width:240px;height:200px;">
+          </div>
+          <div class="col-md-6">
+            <h3><a href="{% url 'profile_detail' pk=profile.pk %}" style="color: black;">{{ profile.company_name }}</a></h3>
+            <h4><a href="{% url 'profile_detail' pk=profile.pk %}" style="color: silver;">{{profile.location }}</a></h4>
+            <h4><a href="{% url 'profile_detail' pk=profile.pk %}" style="color: silver;">{{profile.phone }}</a></h4>
+
+            <a href="{% url 'reserve' %}"><button type="button" name="appoinments" class="btn-primary">Appoinments</button></a>
+          </div><br><br>
+      </div>
+
+    </div>
     {% endfor %}
 {% endblock content %}
