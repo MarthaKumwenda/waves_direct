@@ -1,5 +1,9 @@
+{% extends 'wavesapp/base.html'%}
 {%load staticfiles%}
+
+
 {% block title %}Login{% endblock %}
+{% block class="navbar-right"%}{% endblock %}
 <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
 <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
 <style media="screen">
@@ -7,12 +11,34 @@
   /*padding-top: 40px;*/
   background-color: #cccccc;
   padding: 50px 500px 500px 20px;
+      background-size: auto;
+      border-radius: 5px;
+      border-radius: 5px;
+      margin-top:40px;
+      text-align: center;
+      margin:20px;
+      text-align: center;
+      color: white;
+      padding: 200px;
+
+    }
+  h1{
+    text-align: center;
+    color:#3333FF;
+  }
+  body{
+
+    background:url("{% static 'wavesapp/images/images.png'%}") no-repeat center center;
+    background-color: dodgerblue;
+    /*background-color: #CCCCCC;*/
+    /*background: -webkit-linear-gradient(dodgerblue,#f0Ded3);*/
 
   }
 
 </style>
 
 {% block content %}
+
     <div id="content-container" class="container p-none">
       <table class="table">
         <div class="lgn-container col-lg-8">
@@ -27,7 +53,6 @@
       <tr>
         <td><h2>OR</h2></td>
       </tr>
-
           {% csrf_token %}
            <tr>
                <td><input id="id_username" name="username"
@@ -37,6 +62,7 @@
                <td><input id="id_password" name="password"
                                    type="password" class="form-control" placeholder="Password"></td>
            </tr>
+
          {% if form.errors %}
            <p class=" label label-danger">
                Your username and password didn't match.
@@ -48,7 +74,7 @@
             <input type="submit" value="Login"
             class="" />
             <input type="hidden" name="next" value="{{ next }}" />
-
+          <a href="{% url 'password_reset' %}"><p>Forgot Password? </p></a>
           </td>
         </tr>
           <tr>

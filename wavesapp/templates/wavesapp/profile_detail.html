@@ -1,12 +1,44 @@
 {% extends "wavesapp/base.html"%}
-
+{% load static %}
 {% block content %}
-<a href="#"> <h4>{{profile.company_name }} </h4></a> <br>
-<img src="{{profile.uploadphoto.url }}" alt="" /><br>
-{{profile.location }}<br>
-{{profile.address}}<br>
-{{profile.email }}<br>
-{{profile.phone }}<br>
-{{profile.role}}
+<style>
+ .card{
+  background-color: white;
+  padding: 30px;
+  margin-top: 30px;
+  width: 1000px;
+  height:500px;
+  padding-top: 50px;
+ }
+ h2{
+   font-size: 50px;
+ }
+ .details{
+   font-size: 20px;
+   font-family: serif;;
+   overflow-x: hidden;
+ }
 
-{% endblock %}
+</style>
+<div class="container">
+ <div class="card">
+  <div class="row">
+    <div class="profile_pic col-md-4">
+     <img src="{{profile.uploadphoto.url }}" alt="" width="300px" height="300px"/><br>
+    </div>
+    <div class="details col-md-4">
+     <a href="#"> <h2>{{profile.company_name }} </h2></a> <br>
+     {{profile.address}}<br>
+      {{profile.location }}<br>
+     {{profile.email }}<br>
+     {{profile.phone }}<br>
+     {{profile.role}}
+     {{profile.Services_offered}}
+     <a href="{% url 'reserve' %}"><button type="button" class="btn btn-primary" name="button"
+       style="width:300px;height:30px;border-radius:5px">
+       Book an appointment </button></a>
+    </div>
+  </div>
+ </div>
+</div>
+ {% endblock %}

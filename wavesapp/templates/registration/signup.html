@@ -1,13 +1,17 @@
+{% extends 'wavesapp/base.html'%}
 {%load staticfiles%}
 {% load widget_tweaks %}
+{% block content %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Signup</title>
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
+    <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
+    <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
 
+<<<<<<< HEAD
     <style media="screen">
 body{
   background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
@@ -39,6 +43,8 @@ h1{
     display: inline-table;
     }
   </style>
+=======
+>>>>>>> acdf22f57f2c39347e9be113cca95c40422bc723
   </head>
   <body>
     <div class="container">
@@ -68,22 +74,9 @@ h1{
               Create Profile</button></a>
           </form>
       </div>
-        <div class="row">
-          <div class="col-md-4" id="footer1">
-          <h2>ABOUT US</h2>
-            <a class="info" href="">About waves direct</a><br>
-            <a  class="info" href="">Terms Of Service</a><br>
-            <a class="info" href="">Privacy Policy</a>
-          </div>
-            <div class="col-md-4" id="footer3">
-            <h2>DISCOVER</h2>
-            <a class="info" href="">Waves Blog</a><br>
-            <a class="info" href="">Developers</a><br></a>
-          </div>
-          <div class="col-md-4" id="footer2" style="">
-            &#169 2017 Waves Direct
-          </div>
+
         </div>
       </div>
   </body>
 </html>
+{% endblock content %}

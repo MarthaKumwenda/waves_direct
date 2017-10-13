@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render,redirect, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.shortcuts import render,get_object_or_404,render_to_response,HttpResponseRedirect
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from wavesapp.forms import SignupForm, ProfileForm
+from wavesapp.forms import SignupForm, ProfileForm, PopupForm
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -13,13 +14,18 @@ from .models import Profile
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 
+
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
+def profile_list(request, role=Profile.FREELANCE):
+    profiles = Profile.objects.filter(role=role)
+    return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
     return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
+
 
 def signup(request):
     if request.method == 'POST':
@@ -55,6 +61,17 @@ def profile(request):
         profile_form = ProfileForm()
     return render(request, 'wavesapp/profile.html', {'form': form, 'profile_form': profile_form})
 
+def reserve(request):
+    if request.method == 'POST':
+         appointment_form = PopupForm(request.POST)
+         if appointment_form.is_valid():
+            appointment_form.save()
+            return redirect('home')
+    else:
+        appointment_form = PopupForm()
+    return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form})
+
+
 def search(request):
     role = request.GET.get('role', None)
     query = request.GET.get('q',None)
@@ -69,37 +86,25 @@ def search(request):
         pass
     return render(request,'wavesapp/results.html', {'query':query})
 
-@login_required() # only logged in users should access this
-def edit_user(request):
-    pk = request.user.pk
-    # querying the User object with pk from url
-    user = User.objects.get(pk=pk)
+@login_required
+def edit_profile(request):
+    if request.POST:
+        profile = Profile.objects.get(user=request.user)
+        profile_form = ProfileForm(request.POST , request.FILES, instance=profile)
 
-    # prepopulate UserProfileForm with retrieved user values from above.
-    user_form = UserForm(instance=user)
 
+<<<<<<< HEAD
     # The sorcery begins from here, see explanation below
     ProfileInlineFormset = inlineformset_factory(User, Profile, fields=('company_name', 'location', 'email', 'phone','address'))
     formset = ProfileInlineFormset(instance=user)
+=======
+        if  profile_form.is_valid():
+            profile_form.save()
+>>>>>>> acdf22f57f2c39347e9be113cca95c40422bc723
 
-    if request.user.is_authenticated() and request.user.id == user.id:
-        if request.method == "POST":
-            user_form = UserForm(request.POST, request.FILES, instance=user)
-            formset = ProfileInlineFormset(request.POST, request.FILES, instance=user)
+        return HttpResponseRedirect('/view_profile/')
 
-            if user_form.is_valid():
-                created_user = user_form.save(commit=False)
-                formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
-
-                if formset.is_valid():
-                    created_user.save()
-                    formset.save()
-                    return HttpResponseRedirect('/profile_detail/')
-
-        return render(request, "wavesapp/profile.html", {
-            "noodle": pk,
-            "noodle_form": user_form,
-            "formset": formset,
-        })
-    else:
-        raise PermissionDenied
+    user_profile = request.user.profile
+    return render(request,'registration/edit_profile.html',{
+        'profile':user_profile
+    })

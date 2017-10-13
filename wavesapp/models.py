@@ -21,11 +21,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     uploadphoto = models.FileField(upload_to="profile_photos", default=None, null=True)
     company_name = models.CharField(max_length = 30, default=None, null=True)
-    location = models.CharField(max_length=30, blank=True)
-    phone = models.CharField(max_length=30, blank=True)
-    address = models.CharField(max_length=100, blank=True)
-    email = models.EmailField(max_length=30, blank=True)
+    phone = models.CharField(max_length=30, null=True)
+    address = models.CharField(max_length=100, null=True)
+    city = models.CharField(max_length=30, null=True)
+    email = models.EmailField(max_length=30, null=True)
     role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, null=True, blank=True)
+    Services_offered = models.TextField(default=None, null=True)
 
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
@@ -37,22 +38,22 @@ def create_profile(sender, **kwargs):
         profile.save()
         post_save.connect(create_profile, sender=User)
 
-class Service(models.Model):
-    class Meta:
-        verbose_name_plural = 'Services'
-
-    service_type = models.CharField(max_length = 500)
-    price = models.DecimalField(
-                                max_digits=6,
-                                decimal_places=2
-                                )
-    name = models.ForeignKey(User)
 
 
+class Popup(models.Model):
+    client_name = models.CharField(max_length=60, default=None, null=True)
+    phone_number = models.CharField(max_length=30, blank=True)
+    email = models.EmailField(max_length=100,blank=True)
+    time_of_appointment = models.DateTimeField(default=None, null=True)
+    due_date = models.DateTimeField(default=None, null=True)
+    request = models.CharField(max_length = 2000,default=None, null=True)
 
-class Appointment(models.Model):
-    name_of_client = models.CharField(max_length = 50)
-    time_of_appointment = models.DateTimeField()
+
+    # class Meta:
+    #     model = Popup
+    #     fields = ('client_name','phone_number','email','time_of_appointment','request')
+
+
 
 
 class Migration(migrations.Migration):
