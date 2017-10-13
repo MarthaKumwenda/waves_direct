@@ -7,7 +7,9 @@ urlpatterns = [
     url(r'^$', views.home,name='home'),
     url(r'^$', views.waves_list, name = 'waves_list'),
     url(r'^admin/',admin.site.urls),
+    url(r'^about/$',views.about,name='about'),
     url(r'^login?$',auth_views.login,name='login'),
     url(r'^logout?$',auth_views.logout,name='logout'),
     url(r'^signup/$',views.signup,name='signup'),
+
 ]

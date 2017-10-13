@@ -3,13 +3,8 @@ body{
 }
 .navbar{
   padding: 20px;
-<<<<<<< HEAD
-  /*background-color: dodgerblue;*/
   background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
-=======
   background: -webkit-linear-gradient(dodgerblue, grey);
-  /*background-color: dodgerblue;*/
->>>>>>> fe7c3f5b4e98a285cb20e9f5fac2a75e0b6ff6f1
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;
@@ -41,7 +36,6 @@ h2{
   background-repeat: no-repeat;
   background-size: 115% 100%;
   padding: 50px;
-
 }
 img {
     filter: alpha(opacity=50); /* For IE8 and earlier */
@@ -60,7 +54,7 @@ img {
   font-family: serif;
 }
 .info{
-color:black;
+  color:black;
   font-size: bolder;
   font-family: serif;
 }
