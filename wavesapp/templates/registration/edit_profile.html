@@ -1,0 +1,41 @@
+{% extends "wavesapp/base.html"%}
+{% load static %}
+
+{% block content %}
+<style>
+body{
+  padding: inherit;
+}
+</style>
+<form action="." method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+
+    <br/>
+    User:
+    <input type="text" name="user" value="{{ profile.user}}" /><br />
+    
+    Company name:
+    <input type="text" name="name" value="{{ profile.name}}" /><br />
+
+    Address:
+    <input type="text" name="address" value="{{ profile.address}}" /><br />
+    Email:
+    <input type="text" name="designation" value="{{ profile.designation}}" /><br />
+
+    Phone
+    <input type="text" name="email" value="{{ profile.email}}" /><br />
+    Role:
+    <input type="text" name="role" value="{{ profile.role}}" /><br />
+
+    Services_offered:
+    <input type="text" name="project" value="{{ profile.project}}" /><br />
+
+
+    <input type="submit" value="Save Changes" name="save" />
+    <input type="reset" value="Cancel" name="cancel" />
+    <br/>
+
+</form>
+
+{% endblock %}

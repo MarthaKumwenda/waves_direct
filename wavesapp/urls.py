@@ -14,6 +14,7 @@ urlpatterns = [
     url(r'^signup/$',views.signup,name='signup'),
     url(r'^search/$',views.search,name='search'),
     url(r'^profile/(?P<pk>\d+)/$', views.profile_detail, name='profile_detail'),
-    url(r'^profile/update/$', views.edit_user, name='profile_update'),
+    url(r'^edit_profile/$', views.edit_profile, name='edit_profile'),
     url(r'^reserve/$',views.reserve,name='reserve'),
+    url('^', include('django.contrib.auth.urls')),
 ]

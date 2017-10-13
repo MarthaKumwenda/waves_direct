@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import redirect
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,render_to_response,HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,7 @@ from django.dispatch import receiver
 from .models import Profile
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
+
 
 # Create your views here
 def home(request):
@@ -85,37 +86,19 @@ def search(request):
         pass
     return render(request,'wavesapp/results.html', {'query':query})
 
-@login_required() # only logged in users should access this
-def edit_user(request):
-    pk = request.user.pk
-    # querying the User object with pk from url
-    user = User.objects.get(pk=pk)
+@login_required
+def edit_profile(request):
+    if request.POST:
+        profile = Profile.objects.get(user=request.user)
+        profile_form = ProfileForm(request.POST , request.FILES, instance=profile)
 
-    # prepopulate UserProfileForm with retrieved user values from above.
-    user_form = UserForm(instance=user)
 
-    # The sorcery begins from here, see explanation below
-    ProfileInlineFormset = inlineformset_factory(User, Profile, fields=('company_name', 'location', 'email', 'phone'))
-    formset = ProfileInlineFormset(instance=user)
+        if  profile_form.is_valid():
+            profile_form.save()
 
-    if request.user.is_authenticated() and request.user.id == user.id:
-        if request.method == "POST":
-            user_form = UserForm(request.POST, request.FILES, instance=user)
-            formset = ProfileInlineFormset(request.POST, request.FILES, instance=user)
+        return HttpResponseRedirect('/view_profile/')
 
-            if user_form.is_valid():
-                created_user = user_form.save(commit=False)
-                formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
-
-                if formset.is_valid():
-                    created_user.save()
-                    formset.save()
-                    return HttpResponseRedirect('/profile_detail/')
-
-        return render(request, "wavesapp/profile.html", {
-            "noodle": pk,
-            "noodle_form": user_form,
-            "formset": formset,
-        })
-    else:
-        raise PermissionDenied
+    user_profile = request.user.profile
+    return render(request,'registration/edit_profile.html',{
+        'profile':user_profile
+    })
