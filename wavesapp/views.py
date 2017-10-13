@@ -18,7 +18,6 @@ from django.core.exceptions import PermissionDenied
 # Create your views here
 def home(request):
     return render(request,'wavesapp/base.html',{})
-<<<<<<< HEAD
 def profile_list(request, role=Profile.FREELANCE):
     profiles = Profile.objects.filter(role=role)
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
@@ -27,12 +26,8 @@ def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
     return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
 
-=======
-def waves_list(request):
-    return render(request, 'wavesapp/waves_list.html',{})
 def developers(request):
     return render(request, 'wavesapp/developers.html',{})
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
 
 def signup(request):
     if request.method == 'POST':
@@ -99,15 +94,9 @@ def edit_profile(request):
         profile = Profile.objects.get(user=request.user)
         profile_form = ProfileForm(request.POST , request.FILES, instance=profile)
 
-
-<<<<<<< HEAD
-    # The sorcery begins from here, see explanation below
-    ProfileInlineFormset = inlineformset_factory(User, Profile, fields=('company_name', 'location', 'email', 'phone','address'))
-    formset = ProfileInlineFormset(instance=user)
-=======
         if  profile_form.is_valid():
             profile_form.save()
->>>>>>> acdf22f57f2c39347e9be113cca95c40422bc723
+
 
         return HttpResponseRedirect('/view_profile/')
 

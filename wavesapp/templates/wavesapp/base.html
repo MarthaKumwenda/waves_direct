@@ -5,11 +5,7 @@
     <meta charset="utf-8">
     <title>Waves</title>
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
-<<<<<<< HEAD
     <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome.css' %}">
-=======
-    <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
->>>>>>> 88007a7f9e4b8e70d8db30867f0b0d76d4a914ab
     <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -27,12 +23,9 @@
             {% if user.profile %}
             <li><a href="{% url 'profile_detail' pk=user.id %}">Profile</a></li>
             {% endif %}
-<<<<<<< HEAD
-            <li><a href="{% url 'edit_profile' %}">Account</a></li>
-=======
-            <li><a href="{% url 'profile' %}">Account</a></li>
 
->>>>>>> 88007a7f9e4b8e70d8db30867f0b0d76d4a914ab
+            <li><a href="{% url 'edit_profile' %}">Account</a></li>
+
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout'%}">Logout</a></li>
             {% endif %}
@@ -47,27 +40,13 @@
 
         {% endif %}
   </div>
-<<<<<<< HEAD
+
  </div>
-=======
-<<<<<<< HEAD
-   <!-- END OF NAV -->
-=======
 </div>
->>>>>>> eba9e1f57c03785dfd81d71b4877c24939c0c705
 </nav>
-
-
-<<<<<<< HEAD
-<!-- END OF NAV --><script src="{% static 'wavesapp/script.js' %}"></script>
-=======
 <!-- END OF NAV -->
-<<<<<<< HEAD
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
 {% block content %}
-=======
->>>>>>> 49c57fe39bc970d1f511c6f547d8c3e9fdca24e3
->>>>>>> eba9e1f57c03785dfd81d71b4877c24939c0c705
+
 <div class="pic">
  <div class="container">
   <form class="form" action ="{% url 'search' %}" role="search" method="get" accept-charset="utf-8" style=" height:500px;">
@@ -86,13 +65,11 @@
   </form>
  </div>
 </div>
-<<<<<<< HEAD
 {% endblock %}
-=======
 </div>
-{% endblock content %}
 
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
+
+
 <!-- END OF  DIV CLASS PIC-->
 
 <div class="about">
@@ -104,56 +81,27 @@
         <h2>ABOUT US</h2>
         <a class="info" href="">About waves direct</a><br>
         <a  class="info" href="">Terms Of Service</a><br>
-info" href="">Privacy Policy</a><br>
+         <a class="info" href="">Privacy Policy</a><br>
       </div>
        <div class="col-md-4">
         <form class="form-horizontal">
            <div class="form-group">
-<<<<<<< HEAD
+
              <h2>DISCOVER</h2>
              <a class="info"href="">Waves Direct Blog</a><br>
              <a class="info"href="">Developers</a><br><script src="{% static 'wavesapp/script.js' %}"></script>
+           </div>
        </div>
-      </form>
-=======
-       <h2>DISCOVER</h2>
-<<<<<<< HEAD
-       <a class="info"hrefinfo" href="">Privacy Policy</a><br>
-      </div>
-      <div class="col-md-4">
-        <form class="form-horizontal">
-           <div class="form-group">
-       <h2>DISCOVER</h2>
-       <a class="info"href    </div>
-=======
-       <a class="info"href="">Waves Blog</a><br>
-       <a class="info"href="{% url 'developers' %}">Developers</a><br>
-         </div>
-       </form>
     </div>
-    </div>
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
-    </div>
-<<<<<<< HEAD
    </div>
-  </div>
-=======
->>>>>>> 49c57fe39bc970d1f511c6f547d8c3e9fdca24e3
->>>>>>> eba9e1f57c03785dfd81d71b4877c24939c0c705
   </footer>
+  </div>
 </div>
-</div>
-<<<<<<< HEAD
 
-<!-- END OF FOOTER-->
-<script src="{% static 'wavesapp/js/jquery-3.2.1.js' %}"></script>
-<script src="{% static 'wavesapp/js/bootstrap.js' %}"></script>
-<script src="{% static 'wavesapp/js/script.js' %}"></script>
-=======
 <!-- END OF FOOTER -->
 <script src="{% static 'wavesapp/jquery-3.2.1.js' %}"></script>
 <script src="{% static 'wavesapp/bootstrap.js' %}"></script>
 <script src="{% static 'wavesapp/script.js' %}"></script>
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
+
 </body>
 </html>
