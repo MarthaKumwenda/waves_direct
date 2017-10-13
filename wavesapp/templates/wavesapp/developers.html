@@ -1,0 +1,58 @@
+{% extends 'wavesapp/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+.curve {
+  width: 10%; height: auto;
+  min-width: 80px;
+  float: left;
+  margin-right:2rem;
+  border-radius: 40%;
+  -webkit-shape-outside:circle();
+  shape-outside:circle();
+  padding-bottom: 20px;
+}
+
+</style>
+<link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
+<link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+     <div class="container">
+     <div class="row">
+        <div class="col-md-12">
+          <img src="../static/wavesapp/images/pic2.jpg" width="250px" height="250px" class="curve">
+          <h3>Martha Kumwenda</h3>
+          Entrepreneur and Developper,<br>enjoys solving problems and taking risks.<br>Passionate, creative, ambitious and always learning new things.<br>
+
+        </div>
+        <div class="col-md-12">
+          <img src="../static/wavesapp/images/pic5.jpg" width="250px" height="250px" class="curve">
+          <h3>Muka Mukakanga</h3> Developer very hardworking,<br>creative and very passionate.<br>
+        </div>
+        <div class="col-md-12">
+          <img src="../static/wavesapp/images/pic4.jpg" width="250px" height="250px" class="curve">
+          <h3>Ali Njavwa Shamwana</h3> <br>Developer, Ambitious,Devoted and a Risktaker.<br> </h3>
+        </div>
+     </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+       <div class="col-md-12">
+         <img src="../static/wavesapp/images/pic3.jpg" width="250px" height="250px" class="curve">
+         <h3>Ruth Banda </h3> Developer hardworking person and creative.<br>Quick to learn and passionate.<br>
+       </div>
+       <div class="col-md-12">
+         <img src="../static/wavesapp/images/pic1.jpg" width="250px" height="250px" class="curve">
+         <h3>Bupe Mumbi </h3> Young developer Passionate about what she does,<br>love to make the technical world better for users and standards are beyond satisfactory.<br> </h3>
+       </div>
+       <div class="col-md-12">
+         <img src="../static/wavesapp/images/pic6.jpg" width="250px" height="250px" class="curve">
+         <h3>Barbara Kabaso  </h3><br>Young Developer, Very Passionate,Hardworking,Devoted and a Risktaker.<br>
+       </div>
+    </div>
+   </div>
+   {% endblock content %}

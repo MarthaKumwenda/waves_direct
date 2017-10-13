@@ -3,13 +3,10 @@ body{
 }
 .navbar{
   padding: 20px;
-<<<<<<< HEAD
   /*background-color: dodgerblue;*/
   background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
-=======
   background: -webkit-linear-gradient(dodgerblue, grey);
   /*background-color: dodgerblue;*/
->>>>>>> fe7c3f5b4e98a285cb20e9f5fac2a75e0b6ff6f1
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;

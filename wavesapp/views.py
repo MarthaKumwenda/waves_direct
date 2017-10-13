@@ -11,6 +11,8 @@ def home(request):
     return render(request,'wavesapp/base.html',{})
 def waves_list(request):
     return render(request, 'wavesapp/waves_list.html',{})
+def developers(request):
+    return render(request, 'wavesapp/developers.html',{})
 
 def signup(request):
     if request.method == 'POST':
