@@ -42,7 +42,14 @@ body{
 }
 .navbar{
   padding: 20px;
+<<<<<<< HEAD
   background: -webkit-linear-gradient(dodgerblue,#f0Ded3);
+=======
+  /*background-color: dodgerblue;*/
+  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
+  background: -webkit-linear-gradient(dodgerblue, grey);
+  /*background-color: dodgerblue;*/
+>>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;
