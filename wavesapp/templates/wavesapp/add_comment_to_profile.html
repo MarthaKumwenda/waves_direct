@@ -1,0 +1,18 @@
+{% extends "wavesapp/base.html"%}
+{% load staticfiles %}
+{% block content %}
+
+<style media="screen">
+.comment {
+  margin: 20px 0px 20px 20px;
+  text-align: center;
+}
+</style>
+
+
+<h1>New comment</h1>
+<form method="POST" class="post-form">{% csrf_token %}
+{{ comment_form.as_p }}
+<button type="submit" class="save btn btn-default">Send</button>
+</form>
+{% endblock content %}

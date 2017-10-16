@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import migrations, models
+from django.template.defaultfilters import slugify
 
 
 # Create your models here.
@@ -31,6 +32,21 @@ class Profile(models.Model):
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
 
+class Gallery(models.Model):
+    company_name = models.ForeignKey(User)
+    title = models.CharField(max_length=12)
+
+    def profile_photos(self):
+        title = self.gallery.title
+        slug = slugify(title)
+        return "post_images/%s-%s" % (slug, self.image)
+
+class Images(models.Model):
+    gallery = models.ForeignKey(Gallery, default=None)
+    image = models.ImageField(upload_to="profile_photos",
+                              verbose_name='Image', )
+
+
 def create_profile(sender, **kwargs):
     user = kwargs["instance"]
     if kwargs["created"]:
@@ -49,11 +65,21 @@ class Popup(models.Model):
     request = models.CharField(max_length = 2000,default=None, null=True)
 
 
-    # class Meta:
-    #     model = Popup
-    #     fields = ('client_name','phone_number','email','time_of_appointment','request')
 
+class Comment(models.Model):
+    profile = models.ForeignKey('wavesapp.profile', related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+def approve(self):
+    self.approved_comment = True
+    self.save()
+def __str__(self):
+    return self.text
 
+def approved_comments(self):
+    return self.comments.filter(approved_comment=True)
 
 
 class Migration(migrations.Migration):

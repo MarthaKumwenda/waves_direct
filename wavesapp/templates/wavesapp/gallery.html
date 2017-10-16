@@ -1,0 +1,27 @@
+{% extends "wavesapp/base.html"%}
+{% load widget_tweaks %}
+{% load staticfiles %}
+
+
+{{ images }}
+
+<form id="post_form" method="post" action=""
+      enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {% for hidden in GalleryForm.hidden_fields %}
+        {{ hidden }}
+    {% endfor %}
+
+    {% for field in GalleryForm %}
+        {{ field }} <br />
+    {% endfor %}
+
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }}
+    {% endfor %}
+
+
+    <input type="submit" name="submit" value="Submit" />
+</form>

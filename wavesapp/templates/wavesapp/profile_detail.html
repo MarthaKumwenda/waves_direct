@@ -1,31 +1,43 @@
 {% extends "wavesapp/base.html"%}
-{% load static %}
+{% load staticfiles %}
 {% block content %}
 <style>
- .card{
-  background-color: white;
-  padding: 30px;
-  margin-top: 30px;
-  width: 1000px;
-  height:500px;
-  padding-top: 50px;
+body{
+  text-align: center;
+
+}
+
+ #myHeader{
+   text-align: center;
+   padding-top: 30px;
+  /*margin-top: 3px;*/
  }
- h2{
-   font-size: 50px;
+ h1{
+   padding-top: 20px;
  }
  .details{
+   padding-top:10px;
    font-size: 20px;
-   font-family: serif;;
+   text-align: left;
+   font-family: serif;
    overflow-x: hidden;
  }
-
 </style>
+<div class="container" id="myHeader">
+  <div class="row">
+    <img src="{{profile.uploadphoto.url }}" alt="" width="100%" height="400px"/><br>
+    <h1 style="color:black">{{profile.company_name }} </h1> <br>
+
+  </div>
+
+</div>
 <div class="container">
  <div class="card">
   <div class="row">
-    <div class="profile_pic col-md-4">
-     <img src="{{profile.uploadphoto.url }}" alt="" width="300px" height="300px"/><br>
+    <div class="details col-md-1">
+
     </div>
+<<<<<<< HEAD
     <div class="details col-md-4">
      <a href="#"> <h2>{{profile.company_name }} </h2></a> <br>
       {{profile.location }}<br>
@@ -37,8 +49,66 @@
      <a href="{% url 'reserve' %}"><button type="button" class="btn btn-primary" name="button"
        style="width:300px;height:30px;border-radius:5px">
        Book an appointment </button></a>
+=======
+    <div class="details col-md-5">
+      <h2>Contact Us</h2>
+      <p>
+        {{profile.location }}<br>
+        {{profile.address}}<br>
+        {{profile.email }}<br>
+        {{profile.phone }}<br>
+      </p>
+    </div>
+
+    <div class="details col-md-5">
+      <h2>Services</h2>
+      <p>
+        {{profile.Services_offered}}
+      </p>
+      <a href="{% url 'reserve' %}"><button type="button" class="btn btn-primary" name="button"
+        style="width:300px;height:30px;border-radius:5px">
+        Book an appointment </button></a>
+    </div>
+    <div class="details col-md-1">
+
+>>>>>>> origin/registration
     </div>
   </div>
  </div>
 </div>
+<div class="container">
+  <div class="row">
+  </div>
+
+</div>
+<div class="container">
+  <div class="row">
+    <hr>
+        <h2>Commment</h2>
+    <form class="form-group"  method="post">
+      <a class="btn btn-default" href="{% url 'add_comment_to_profile' pk=profile.pk %}">Add comment</a>
+      {% for comment in profile.comments.all %}
+      {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+    <div class="date">
+    {{ comment.created_date }}
+    {% if not comment.approved_comment %}
+    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+    <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+    {% endif %}
+    </div>
+    <strong>{{ comment.author }}</strong>
+    <p>{{ comment.text|linebreaks }}</p>
+    </div>
+    {% endif %}
+    {% empty %}
+    <p>No comments here yet :(</p>
+    {% endfor %}
+
+    </form>
+
+  </div>
+
+</div>
+<hr>
  {% endblock %}
