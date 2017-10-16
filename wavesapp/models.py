@@ -44,8 +44,8 @@ class Popup(models.Model):
     client_name = models.CharField(max_length=60, default=None, null=True)
     phone_number = models.CharField(max_length=30, blank=True)
     email = models.EmailField(max_length=100,blank=True)
-    time_of_appointment = models.DateTimeField(default=None, null=True)
-    due_date = models.DateTimeField(default=None, null=True)
+    time_of_appointment = models.TimeField(default=None, null=True)
+    due_date = models.DateField(default=None, null=True)
     request = models.CharField(max_length = 2000,default=None, null=True)
 
 

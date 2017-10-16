@@ -96,17 +96,18 @@ def search(request):
 
 @login_required
 def edit_profile(request):
-    if request.POST:
-        profile = Profile.objects.get(user=request.user)
-        profile_form = ProfileForm(request.POST , request.FILES, instance=profile)
+    profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
 
         if  profile_form.is_valid():
             profile_form.save()
 
 
-        return HttpResponseRedirect('/view_profile/')
+        return redirect('profile_detail', pk=request.user.id)
 
-    user_profile = request.user.profile
+    else:
+        profile_form = ProfileForm(instance=profile)
     return render(request,'registration/edit_profile.html',{
-        'profile':user_profile
+        'profile_form':profile_form
     })

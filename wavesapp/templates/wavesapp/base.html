@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>Waves</title>
     <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
@@ -81,8 +82,8 @@
         <h2>ABOUT US</h2>
 
         <a class="info" href="{% url 'about'%}">About waves direct</a><br>
-        <a  class="info" href="">Terms Of Service</a><br>
-         <a class="info" href="">Privacy Policy</a><br>
+        <a  class="info" href="{% url 'about'%}">Terms Of Service</a><br>
+         <a class="info" href="{% url 'about'%}">Privacy Policy</a><br>
       </div>
        <div class="col-md-4">
         <form class="form-horizontal">
@@ -92,19 +93,6 @@
              <a class="info"href="">Waves Direct Blog</a><br>
              <a class="info"href="{% url 'developers'%}">Developers</a><br><script src="{% static 'wavesapp/script.js' %}"></script>
            </div>
-       </div>
-    </div>
-   </div>
-        <a class="info" href="">About waves direct</a><br>
-        <a  class="info" href="">Terms Of Service</a><br>
-        <a class="info" href="">Privacy Policy</a><br>
-      </div>
-      <div class="col-md-4">
-        <form class="form-horizontal">
-           <div class="form-group">
-       <h2>DISCOVER</h2>
-       <a class="info"href="">Waves Direct Blog</a><br>
-       <a class="info"href="">Developers</a><br>
          </div>
        </form>
     </div>

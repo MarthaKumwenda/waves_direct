@@ -6,12 +6,9 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', views.home,name='home'),
-<<<<<<< HEAD
     url(r'^profile_list/(?P<role>\d+)/$', views.profile_list, name='profile_list'),
-=======
     url(r'^admin/',admin.site.urls),
     url(r'^about/$',views.about,name='about'),
->>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^login/$',auth_views.login,name='login'),
     url(r'^profile/$',views.profile,name='profile'),

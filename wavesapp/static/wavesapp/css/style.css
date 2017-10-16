@@ -39,27 +39,14 @@ h1{
 body{
   background-color:#f0Ded3;
   margin-top: 90px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .navbar{
   padding: 20px;
-<<<<<<< HEAD
-<<<<<<< HEAD
   background: -webkit-linear-gradient(dodgerblue,#f0Ded3);
-=======
-=======
-
->>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
   /*background-color: dodgerblue;*/
-  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
-<<<<<<< HEAD
-  background: -webkit-linear-gradient(dodgerblue, grey);
-  /*background-color: dodgerblue;*/
->>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
-=======
-
->>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 20px;
   font-weight: bolder;
 
 }
@@ -119,12 +106,8 @@ footer {
   background-image:url("images.png");
   background-repeat: no-repeat;
   background-size: 115% 100%;
-<<<<<<< HEAD
   padding: 80px;
 
-=======
-  padding: 50px;
->>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
 }
 img {
     filter: alpha(opacity=50); /* For IE8 and earlier */
@@ -352,9 +335,9 @@ html {
   background-image:url('imgs/g5.jpg');
   background-repeat: no-repeat;
   background-size: 100% 900%;
-
-    background-color:#f0Ded3;
-  padding: 0;
+  background-color:#f0Ded3;
+  padding-bottom: 20px;
+  padding-top: 20px;
 }
 .wrapper .column .inner {
   background-size: cover;
