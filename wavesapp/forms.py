@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile,Popup
+from .models import Profile,Popup, Comment,Images, Gallery
 
 
 class SignupForm(UserCreationForm):
@@ -44,3 +44,21 @@ class PopupForm(forms.ModelForm):
     class Meta:
         model = Popup
         fields = ('client_name','phone_number','email','time_of_appointment','due_date','request')
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)
+
+class GalleryForm(forms.ModelForm):
+    title = forms.CharField(max_length=128)
+    body = forms.CharField(max_length=245, label="Item Description.")
+
+    class Meta:
+        model = Gallery
+        fields = ('title', 'body', )
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
+    class Meta:
+        model = Images
+        fields = ('image', )
