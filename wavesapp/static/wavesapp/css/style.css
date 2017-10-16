@@ -43,13 +43,21 @@ body{
 .navbar{
   padding: 20px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   background: -webkit-linear-gradient(dodgerblue,#f0Ded3);
 =======
+=======
+
+>>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
   /*background-color: dodgerblue;*/
   background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
+<<<<<<< HEAD
   background: -webkit-linear-gradient(dodgerblue, grey);
   /*background-color: dodgerblue;*/
 >>>>>>> 4569a97de095f70ba23378a415bb4a579d291d5e
+=======
+
+>>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
   padding-top: 30px;
   padding-bottom: 30px;
   font-weight: bolder;
@@ -82,7 +90,7 @@ h2{
 
 footer {
   position: bottom;
-  bottom: -70px;
+  bott>>>>>>> origin/masterom: -70px;
   height: 30px;
   width: 100%;
   color: white;
@@ -111,8 +119,12 @@ footer {
   background-image:url("images.png");
   background-repeat: no-repeat;
   background-size: 115% 100%;
+<<<<<<< HEAD
   padding: 80px;
 
+=======
+  padding: 50px;
+>>>>>>> 9b0b20aaccbf07a5ef81831a9d0ae16860c9d3d8
 }
 img {
     filter: alpha(opacity=50); /* For IE8 and earlier */

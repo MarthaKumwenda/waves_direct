@@ -22,6 +22,12 @@ def profile_list(request, role=Profile.FREELANCE):
     profiles = Profile.objects.filter(role=role)
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
+def waves_list(request):
+    return render(request, 'wavesapp/waves_list.html',{})
+def about(request):
+    return render(request, 'wavesapp/about.html',{})
+
+
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
     return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
