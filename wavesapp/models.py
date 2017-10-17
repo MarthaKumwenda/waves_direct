@@ -43,8 +43,8 @@ class Gallery(models.Model):
 
 class Images(models.Model):
     gallery = models.ForeignKey(Gallery, default=None)
-    image = models.ImageField(upload_to="profile_photos",
-                              verbose_name='Image', )
+    image = models.FileField(upload_to="profile_photos",
+                              default=None, null=True, )
 
 
 def create_profile(sender, **kwargs):

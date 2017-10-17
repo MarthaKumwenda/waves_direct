@@ -33,7 +33,6 @@ h1{
   background-color:#f0Ded3;
 }
 
-
 /*for base*/
 
 body{
@@ -77,7 +76,7 @@ h2{
 
 footer {
   position: bottom;
-  bott>>>>>>> origin/masterom: -70px;
+  bottom: -70px;
   height: 30px;
   width: 100%;
   color: white;
@@ -216,7 +215,7 @@ img {
   position: relative;
   /*background-color: #fff;*/
     background-color:#f0Ded3;
-}
+}    </div>
 .wrapper:after {
   padding-top: 43.85714285714287%;
   display: block;

@@ -25,19 +25,16 @@ def profile_list(request, role=Profile.FREELANCE):
     profiles = Profile.objects.filter(role=role)
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
-<<<<<<< HEAD
 def waves_list(request):
     return render(request, 'wavesapp/waves_list.html',{})
 def about(request):
     return render(request, 'wavesapp/about.html',{})
 
-=======
 def search(request):
     query = request.GET.get('q', '')
     profiles = Profile.objects.filter(company_name__icontains=query)
     # profiles = Profile.objects.filter(Q(company_name__icontains="cu")|Q(role__icontains="sa")|Q(city__icontains="lusaka"))
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
->>>>>>> origin/registration
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
@@ -100,9 +97,9 @@ def gallery(request):
 
 
 
-            gallery_form = galleryForm.save(commit=False)
-            gallery_form.user = request.user
-            gallery_form.save()
+            galleryForm = galleryForm.save(commit=False)
+            galleryForm.user = request.user
+            galleryForm.save()
 
             for form in formset.cleaned_data:
                 image = form['image']
@@ -112,12 +109,12 @@ def gallery(request):
                              "You have successfully uploaded your photos!")
             return redirect("profile_detail")
         else:
-            print (gallery_form.errors, formset.errors)
+            print (galleryForm.errors, formset.errors)
     else:
-        gallery_form = GalleryForm()
+        galleryForm = GalleryForm()
         formset = ImageFormSet(queryset=Images.objects.none())
     return render(request, 'wavesapp/gallery.html',
-                  {'p': gallery_form, 'formset': formset})
+                  {'p': galleryForm, 'formset': formset})
 
 
 def reserve(request):
