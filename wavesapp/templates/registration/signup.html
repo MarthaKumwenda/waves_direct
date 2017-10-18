@@ -11,42 +11,12 @@
     <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
     <link rel="stylesheet" href="{% static 'wavesapp/css/style.css' %}">
 
-    <style media="screen">
-body{
-  background: -webkit-linear-gradient(dodgerblue,#CCCCCC);
-  /*background-color: #CCCCCC;*/
-}
-#row1{
-  background:url('{% static "wavesapp/images/images.png"%}') no-repeat center center;
-  background-size: auto;
-  border-radius: 5px;
-  margin:20px;
-  text-align: center;
-  padding: 100px;
-}
-
-h1{
-  text-align: center;
-  color:#3333FF;
-  }
-
-.myform{
-  color: white;
-  width: 50%;
-  padding: 12px 20px;
-  margin-bottom: 20px;
-  display: inline-block;
-        }
-.fieldWrapper{
-  margin: 20px;
-    display: inline-table;
-    }
-  </style>
   </head>
   <body>
     <div class="container">
       <div class="row" id="row1">
-        <h1>Sign Up</h1>
+        <h2 style="color:black;text-align:center;font-size:70px;padding-bottom:40px;margin-left:40px">
+          Sign Up</h2>
         <form class="myform" action="/signup/" method="post">
           {% csrf_token %}
           {% for field in form %}
@@ -55,19 +25,20 @@ h1{
             {% render_field field placeholder=field.label class='form-control' %}
             {% if field.help_text %}
             {% endif %}
-          </div>
+          </div><br>
           {% if messages %}
           <ul class="messages">
           {% for message in messages %}
           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
           {% endfor %}
-          </ul>
+        </ul>
           {% endif %}
           {% endfor %}
-            <input type="submit" name="" value="Register" style="color:white;background-color:#cccccc;border-color:#9999FF;width:300px;height:30px;border-radius:5px"/>
+          <button style="width:300px;height:30px;" class="btn btn-success" type="submit" name="send">Register</button>
+
             <h2>OR</h2>
             <a href="{% url 'profile' %}"><button type="button" class="btn btn-primary" name="button"
-              style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px">
+              style="width:300px;height:30px;">
               Create Profile</button></a>
           </form>
       </div>

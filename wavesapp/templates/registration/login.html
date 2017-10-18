@@ -5,89 +5,40 @@
 {% block title %}Login{% endblock %}
 <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
 <link rel="stylesheet" href="{% static 'wavesapp/css/font-awesome' %}">
-<style media="screen">
-  body{
-  /*padding-top: 40px;*/
-  background-color: #cccccc;
-  padding: 50px 500px 500px 20px;
-      background-size: auto;
-      border-radius: 5px;
-      border-radius: 5px;
-      margin-top:40px;
-      text-align: center;
-      margin:20px;
-      text-align: center;
-      color: white;
-      padding: 200px;
-
-    }
-  h1{
-    text-align: center;
-    color:#3333FF;
-  }
-  body{
-
-    background:url("{% static 'wavesapp/images/images.png'%}") no-repeat center center;
-    background-color: dodgerblue;
-
-  }
-
-</style>
 
 {% block content %}
-
+<h2 style="color:black;text-align:center;font-size:70px;padding-bottom:40px;margin-left:40px">
+  Login</h2>
     <div id="content-container" class="container p-none">
-      <table class="table">
-        <div class="lgn-container col-lg-8">
-          <form id="login-form" method="post">
-      <tr>
-        <td>
-          <div class="col-md-6 row-block">
+      <div class="lgn-container col-lg-6 " style="text-align:center;margin-left:300px">
+        <form id="login-form" method="post">
+          <div class="col-md-6 row-block" style="margin-left:150px;">
             <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-facebook btn-block"><button class="btn btn-primary"  type="button" name="button">Login with Facebook</button></a>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td><h2>OR</h2></td>
-      </tr>
-          {% csrf_token %}
-           <tr>
-               <td><input id="id_username" name="username"
-                           type="text" class="form-control" placeholder="Username"></td>
-           </tr>
-           <tr>
-               <td><input id="id_password" name="password"
-                                   type="password" class="form-control" placeholder="Password"></td>
-           </tr>
-
-         {% if form.errors %}
+          </div><br><br>
+          <hr>
+          <h2>OR</h2>
+{% csrf_token %}
+          <input id="id_username" name="username" type="text" class="form-control" placeholder="Username"><br>
+          <input id="id_password" name="password" type="password" class="form-control" placeholder="Password"><br>
+ {% if form.errors %}
            <p class=" label label-danger">
                Your username and password didn't match.
                Please try again.
            </p>
-        {% endif %}
-        <tr>
-          <td>
-            <input type="submit" value="Login"
-            class="" />
-            <input type="hidden" name="next" value="{{ next }}" />
-          <a href="{% url 'password_reset' %}"><p>Forgot Password? </p></a>
-          </td>
-        </tr>
-          <tr>
-            <td><h2>OR</h2></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="col-md-6 row-block">
-                <a href="{% url 'signup' %}" > <button class="btn btn-primary" type="button" name="button">Signup</button></a>
-                <a href="{% url 'profile' %}"> <button class="btn btn-primary" type="button" name="button">Create Profile</button></a>
-              </div>
+{% endif %}
+        <div class="" style="margin-left:30px;">
+          <button class="btn btn-success" type="submit" name="send">Login</button>
 
-            </td>
-          </tr>
+          <input type="hidden" name="next" value="{{ next }}" />
+          <hr>
+          <a href="{% url 'password_reset' %}"><button class="btn btn-primary" type="button" name="button">Forgot Password? </button></a>
+        </div>
+          <h2>OR</h2>
+          <div class="col-md-6 row-block" style="margin-left:150px;">
+            <a href="{% url 'signup' %}" > <button  class="btn btn-primary" type="button" name="button">Signup</button></a>
+            <a href="{% url 'profile' %}"> <button class="btn btn-primary" type="button" name="button">Create Profile</button></a>
+          </div>
       </form>
-    </table>
     </div>
-    </div>
+  </div>
 {% endblock content %}
