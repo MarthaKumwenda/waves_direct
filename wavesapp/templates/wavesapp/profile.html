@@ -7,13 +7,13 @@
   <head>
     <meta charset="utf-8">
     <title>Create Profile</title>
-    <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}"> 
+    <link rel="stylesheet" href="{% static 'wavesapp/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'wavesappcss/font-awesome' %}">
-
   </head>
   <body>
 <div class="mypProfile">
-      <h1>CREATE YOUR PROFILE</h1>
+      <h2 style="color:black;text-align:center;font-size:70px;padding-bottom:40px;margin-left:40px">
+        Create Your Profile</h2>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <h3>Login Details</h3>
@@ -34,8 +34,8 @@
         {% endif %}
       </div>
       {% endfor %}
-      <button type="submit" class="btn btn-primary" name="button"
-      style="color:white;border-color:#cccccc;width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
+      <button type="submit" class="btn btn-success" name="button"
+      style="width:300px;height:30px;border-radius:5px;margin:30px 60px 0 100px;">
       Create </button>
     </form>
 

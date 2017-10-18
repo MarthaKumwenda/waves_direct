@@ -9,7 +9,7 @@ from wavesapp.forms import SignupForm, ProfileForm, PopupForm, CommentForm,Image
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-# from django.db.models import Q
+from django.db.models import Q
 from django.dispatch import receiver
 from .models import Profile, Comment, Images
 from django.forms.models import inlineformset_factory, modelformset_factory
@@ -27,8 +27,7 @@ def profile_list(request, role=Profile.FREELANCE):
 
 def search(request):
     query = request.GET.get('q', '')
-    profiles = Profile.objects.filter(company_name__icontains=query)
-    # profiles = Profile.objects.filter(Q(company_name__icontains="cu")|Q(role__icontains="sa")|Q(city__icontains="lusaka"))
+    profiles = Profile.objects.filter(Q(company_name__icontains=query)|Q(role__icontains=query)|Q(address__icontains=query)|Q(city__icontains=query))
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
 def profile_detail(request, pk):

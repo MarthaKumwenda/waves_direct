@@ -9,10 +9,14 @@
 }
 </style>
 
+<h2 style="color:black;text-align:center;font-size:70px;padding-bottom:40px;margin-left:40px;">
+  New comment</h2>
+  <div class="myComment">
+    <form method="POST" class="post-form">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      <button type="submit" class="save btn btn-success">Send</button>
+    </form>
 
-<h1>New comment</h1>
-<form method="POST" class="post-form">{% csrf_token %}
-{{ comment_form.as_p }}
-<button type="submit" class="save btn btn-default">Send</button>
-</form>
+  </div>
 {% endblock content %}
