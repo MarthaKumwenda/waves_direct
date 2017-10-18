@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.db import migrations, models
 from django.template.defaultfilters import slugify
+import numpy as np
 
 
 # Create your models here.
@@ -31,9 +32,12 @@ class Profile(models.Model):
 
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
+    def average_rating(self):
+        all_ratings = map(lambda x: x.rating, self.review_set.all())
+        return np.mean(all_ratings)
 
 class Gallery(models.Model):
-    company_name = models.ForeignKey(User)
+    user = models.ForeignKey(User,default=None, null=True)
     title = models.CharField(max_length=12)
 
     def profile_photos(self):
@@ -43,17 +47,11 @@ class Gallery(models.Model):
 
 class Images(models.Model):
     gallery = models.ForeignKey(Gallery, default=None)
-    image = models.FileField(upload_to="profile_photos",
+    image = models.ImageField(upload_to="profile_photos",
                               default=None, null=True, )
 
-
-def create_profile(sender, **kwargs):
-    user = kwargs["instance"]
-    if kwargs["created"]:
-        profile = Profile(user=user)
-        profile.save()
-        post_save.connect(create_profile, sender=User)
-
+    class Meta:
+        verbose_name_plural='Images'
 
 
 class Popup(models.Model):

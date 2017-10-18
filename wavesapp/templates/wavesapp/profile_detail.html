@@ -1,5 +1,6 @@
 {% extends "wavesapp/base.html"%}
 {% load staticfiles %}
+{% load bootstrap3 %}
 {% block content %}
 <style>
 body{
@@ -54,17 +55,19 @@ body{
         Book an appointment </button></a>
     </div>
     <div class="details col-md-1">
-
     </div>
   </div>
  </div>
 </div>
 <div class="container">
   <div class="row">
+    {% for image in images %}
+    <img src="{{ image.image.url }}" alt="" style="width:400px; height:400px;"/><br>
+    {% endfor %}
   </div>
 
 </div>
-<img src="{{profile.image.url }}" alt="" width="100%" height="400px"/><br> 
+
 <div class="container">
   <div class="row">
     <hr>
@@ -92,7 +95,38 @@ body{
     </form>
 
   </div>
+  <h5>{{ profile.review_set.count }} reviews ({{ profile.average_rating | floatformat }} average rating)</h5>
 
+  <h3>Recent reviews</h3>
+
+{% if profile.review_set.all %}
+<div class="row">
+  {% for review in profile.review_set.all %}
+  <div class="col-xs-6 col-lg-4">
+      <em>{{ review.comment }}</em>
+      <h6>Rated {{ review.rating }} of 5 by {{ review.user_name }}</h6>
+      <h5><a href="{% url 'reviews:review_detail' review.id %}">
+      Read more
+      </a></h5>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No reviews for this profile yet</p>
+{% endif %}
+
+<h3>Add your review</h3>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'reviews:add_review' profile.id %}" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form layout='inline' %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">
+    {% bootstrap_icon "star" %} Add
+  </button>
+  {% endbuttons %}
+</form>
 </div>
 <hr>
  {% endblock %}

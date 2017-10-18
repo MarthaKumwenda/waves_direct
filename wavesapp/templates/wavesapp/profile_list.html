@@ -26,6 +26,13 @@
           </div><br><br>
       </div>
       <a href="{% url 'profile_detail' pk=profile.user.id  %}">Comments: {{ Profile.approved_comments.count }}</a>
+      <div>
+            <h4><a href="{% url 'profile_detail' profile.id %}">
+            {{ Profile.company_name }}
+            </a></h4>
+            <h5>{{ Profile.review_set.count }} reviews</h5>
+            <h5>{{ Profile.average_rating | floatformat }} average rating</h5>
+        </div>
     </div>
     {% endfor %}
 {% endblock content %}

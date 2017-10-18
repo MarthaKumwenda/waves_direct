@@ -4,7 +4,6 @@
 
 {% block content %}
 
-  {{gallery}}
 
 
 
@@ -16,7 +15,9 @@
         {{ hidden }}
     {% endfor %}
 
-    {% for field in GalleryForm %}
+    {% for field in g %}
+        {{ field.errors }} <br />
+        {{ field.label_tag }}
         {{ field }} <br />
     {% endfor %}
 

@@ -45,13 +45,13 @@ class CommentForm(forms.ModelForm):
 
 class GalleryForm(forms.ModelForm):
     title = forms.CharField(max_length=128)
-    body = forms.CharField(max_length=245, label="Item Description.")
+
 
     class Meta:
         model = Gallery
-        fields = ('title', 'body', )
+        fields = ('title','user' )
 class ImageForm(forms.ModelForm):
-    image = forms.FileField()
+    image = forms.ImageField()
     class Meta:
         model = Images
         fields = ('image', )

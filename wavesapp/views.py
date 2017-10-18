@@ -5,7 +5,7 @@ from django.shortcuts import render,get_object_or_404,render_to_response,HttpRes
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from wavesapp.forms import SignupForm, ProfileForm, PopupForm, CommentForm,ImageForm, GalleryForm
+from wavesapp.forms import SignupForm, ProfileForm, PopupForm, CommentForm,ImageForm,GalleryForm
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -14,6 +14,8 @@ from django.dispatch import receiver
 from .models import Profile, Comment, Images
 from django.forms.models import inlineformset_factory, modelformset_factory
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
+from reviews.forms import ReviewForm
 
 
 
@@ -25,8 +27,6 @@ def profile_list(request, role=Profile.FREELANCE):
     profiles = Profile.objects.filter(role=role)
     return render(request, 'wavesapp/profile_list.html',{'profiles': profiles})
 
-def waves_list(request):
-    return render(request, 'wavesapp/waves_list.html',{})
 def about(request):
     return render(request, 'wavesapp/about.html',{})
 
@@ -38,13 +38,13 @@ def search(request):
 
 def profile_detail(request, pk):
     profile = get_object_or_404(Profile, user_id=pk)
-    return render(request, 'wavesapp/profile_detail.html', {'profile': profile})
+    images = Images.objects.filter(gallery__user__id=pk)
+    form = ReviewForm()
+    return render(request, 'wavesapp/profile_detail.html', {'profile': profile, 'images': images, 'form':form})
 
 def developers(request):
     return render(request, 'wavesapp/developers.html',{})
 
-def gallery(request):
-    return render(request, 'wavesapp/gallery.html',{})
 
 def signup(request):
     if request.method == 'POST':
@@ -83,8 +83,8 @@ def profile(request):
 @login_required
 def gallery(request):
 
-    ImageFormSet = modelformset_factory(Images,
-                                        form=ImageForm, extra=3)
+    ImageFormSet = modelformset_factory(Images,extra=3,
+                                        form=ImageForm)
 
     if request.method == 'POST':
 
@@ -103,18 +103,18 @@ def gallery(request):
 
             for form in formset.cleaned_data:
                 image = form['image']
-                photo = Images(gallery=gallery_form, image=image)
+                photo = Images(gallery=galleryForm, image=image)
                 photo.save()
             messages.success(request,
                              "You have successfully uploaded your photos!")
-            return redirect("profile_detail")
+            return redirect("profile_detail",pk=request.user.id)
         else:
             print (galleryForm.errors, formset.errors)
     else:
         galleryForm = GalleryForm()
         formset = ImageFormSet(queryset=Images.objects.none())
     return render(request, 'wavesapp/gallery.html',
-                  {'p': galleryForm, 'formset': formset})
+                  {'g': galleryForm, 'formset': formset})
 
 
 def reserve(request):
