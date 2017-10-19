@@ -22,7 +22,7 @@
       {% endif %}
     </div>
     {% endfor %}
-    <button type="submit" name="send">Send</button>
+    <a href="{% url 'confirm_booking' %}" > <button class="btn btn-success" type="submit" name="send">Send</button> </a>
 
   </form>
 </div>

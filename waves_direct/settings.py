@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'social_django',
+<<<<<<< HEAD
     'bootstrap3',
     'reviews'
 
+=======
+>>>>>>> 044a55eff99d19cbe5871aa412ccf920fa244774
 
 ]
 
@@ -139,7 +142,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL ='home'
+LOGIN_REDIRECT_URL ='confirm_login'
 LOGOUT_REDIRECT_URL ='login'
 
 

@@ -1,0 +1,10 @@
+{% extends 'wavesapp/base.html'%}
+{%load staticfiles%}
+
+{% block content %}
+
+<h2 style="color:black;text-align:center;font-size:70px;padding-bottom:40px;margin-left:40px">
+ You Have successfully Booked An Appointment!
+</h2>
+<a href="{% url 'profile_detail' pk=profile.user.id  %}"><button class="btn btn-success" style="margin-left:600px"type="button" name="send">HOME</button></a>
+{% endblock content %}

@@ -50,21 +50,22 @@
 <!-- END OF NAV -->
 {% block content %}
 
-<div style=" background:url('{% static "wavesapp/images/Direct.png"%}') no-repeat center;background-size:100% 100%;" class="pic">
+ <div class="imageBG"  style=" background:url('{% static "wavesapp/images/salon-masthead.jpg"%}') no-repeat center;background-size:100% 100%;" class="pic">
+
 
  <div class="container" >
    <div class="row">
      <form  class="form" action ="{% url 'search' %}" role="search" method="get" accept-charset="utf-8" style=" height:500px;">
        <div class="row"><script src="{% static 'wavesapp/script.js' %}"></script>
-         <!-- <h1>Waves Direct</h1> -->
+         <h1>Waves Direct</h1>
          <div class="searchbar">
            <input class="search" id="btn"type="text" placeholder="search" name="q">
            <button href="{% url 'search' %}" class="button" id="txtSearch" type='search'>Enter</button>
          </div>
          <div class="cent" style="padding-top:10px;">
-           <a class="ref" href="{% url 'profile_list' role=1 %}" style="margin-right:20px; color:black;">Salons</a>
-           <a class="ref" href="{% url 'profile_list' role=2 %}" style="margin-left:20px; color:black;">Barbershop</a>
-           <a class="ref" href="{% url 'profile_list' role=3 %}" style="margin-left:40px; color:black;">Freelancers</a>
+           <a class="ref" href="{% url 'profile_list' role=1 %}" style="margin-right:20px;">Salons</a>
+           <a class="ref" href="{% url 'profile_list' role=2 %}" style="margin-left:20px;">Barbershop</a>
+           <a class="ref" href="{% url 'profile_list' role=3 %}" style="margin-left:20px;">Freelancers</a>
          </div>
        </div>
      </form>
@@ -72,13 +73,13 @@
    </div>
  </div>
 </div>
+
 {% endblock %}
-</div>
 
 
+<hr>
 
 <!-- END OF  DIV CLASS PIC-->
-<hr>
 <div class="about">
 <div class="about">
  <footer class="footer">

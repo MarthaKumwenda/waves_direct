@@ -40,8 +40,13 @@ font-size: 20px;
 /*for base*/
 
 body{
+<<<<<<< HEAD
   margin-top: 80px;
 
+=======
+  /*background-color:#f0Ded3;*/
+  margin-top: 45px;
+>>>>>>> 044a55eff99d19cbe5871aa412ccf920fa244774
 }
 
 .navbar{
@@ -61,18 +66,24 @@ body{
 }
 h1{
 padding-top: 100px;
+<<<<<<< HEAD
 /*color:white;*/
 font-size: 70px;
+=======
+color:#222222;
+font-size: 100px;
+>>>>>>> 044a55eff99d19cbe5871aa412ccf920fa244774
 font-family:serif;
 font-weight: bolder;
 text-align: center;
-padding-bottom: 100px;
+padding-bottom: 80px;
 }
 h2{
   font-size: 40px;
   font-family: serif;
 }
 .search{
+  margin-top: 10px;
   margin-left: 247px;
   width:590px;
   padding: 4px;
@@ -116,11 +127,19 @@ img {
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .cent{
-  color: white;
-  margin-left: 350px;
+  margin-top: 20px;
+  margin-left: 300px;
   font-size: 25px;
   font-weight: bolder;
   font-family: serif;
+}
+.ref{
+  color: white;
+  margin-right: 20px;
+  border: 1px black solid;
+  background: #222;
+  padding: 10px;
+  border-radius: 10px;
 }
 .about{
   color:black;

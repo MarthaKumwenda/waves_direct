@@ -41,9 +41,22 @@ def profile_detail(request, pk):
     form = ReviewForm()
     return render(request, 'wavesapp/profile_detail.html', {'profile': profile, 'images': images, 'form':form})
 
+def confirm_signin(request, pk):
+    return render(request, 'wavesapp/confirm_signin.html',{})
+
+def confirm_booking(request, pk):
+    # reserve = get_object_or_404(Profile, user_id=pk)
+    return render(request, 'wavesapp/confirm_booking.html',{})
+
 def developers(request):
     return render(request, 'wavesapp/developers.html',{})
 
+
+def confirm_signup(request):
+    return render(request, 'wavesapp/confirm_signup.html',{})
+
+def confirm_login(request):
+    return render(request, 'wavesapp/confirm_login.html',{})
 
 def signup(request):
     if request.method == 'POST':
@@ -54,7 +67,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('confirm_signup')
     else:
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -73,7 +86,7 @@ def profile(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('profile_detail',pk=user.id )
+            return redirect('confirm_signin',pk=user.id )
     else:
         form = SignupForm()
         profile_form = ProfileForm()
@@ -116,12 +129,12 @@ def gallery(request):
                   {'g': galleryForm, 'formset': formset})
 
 
-def reserve(request):
+def reserve(request, pk):
     if request.method == 'POST':
          appointment_form = PopupForm(request.POST)
          if appointment_form.is_valid():
             appointment_form.save()
-            return redirect('home')
+            return redirect('confirm_booking',pk=user.id)
     else:
         appointment_form = PopupForm()
     return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form})
