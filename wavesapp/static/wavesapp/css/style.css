@@ -40,25 +40,13 @@ font-size: 20px;
 /*for base*/
 
 body{
-<<<<<<< HEAD
-  background-color:#f0Ded3;
-  margin-top: 90px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-.navbar{
-  padding: 20px;
-  background: -webkit-linear-gradient(dodgerblue,#f0Ded3);
-  /*background-color: dodgerblue;*/
-  padding-top: 20px;
-=======
-  /*background-color:#f0Ded3;*/
   margin-top: 80px;
+
 }
+
 .navbar{
   padding-top: 10px;
   padding-bottom: 10px;
->>>>>>> 5ab665b020a35ff31cdb9e607b92cd31cbbfba03
   font-weight: bolder;
 }
 /*#fakeNav{
@@ -72,8 +60,8 @@ body{
   padding: 12px;
 }
 h1{
-  padding-top: 100px;
-  color:white;
+padding-top: 100px;
+/*color:white;*/
 font-size: 70px;
 font-family:serif;
 font-weight: bolder;
@@ -230,13 +218,7 @@ img {
   height: 150%;
   position: relative;
   /*background-color: #fff;*/
-<<<<<<< HEAD
-    background-color:#f0Ded3;
-}    </div>
-=======
-    /*background-color:#f0Ded3;*/
 }
->>>>>>> 5ab665b020a35ff31cdb9e607b92cd31cbbfba03
 .wrapper:after {
   padding-top: 43.85714285714287%;
   display: block;
@@ -355,11 +337,6 @@ html {
   /*background-image:url('imgs/g5.jpg');*/
   background-repeat: no-repeat;
   background-size: 100% 900%;
-<<<<<<< HEAD
-  background-color:#f0Ded3;
-=======
-  /*background-color:#f0Ded3;*/
->>>>>>> 5ab665b020a35ff31cdb9e607b92cd31cbbfba03
   padding-bottom: 20px;
   padding-top: 20px;
 }

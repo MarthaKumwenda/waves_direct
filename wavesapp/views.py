@@ -82,7 +82,7 @@ def profile(request):
 @login_required
 def gallery(request):
 
-    ImageFormSet = modelformset_factory(Images,extra=3,
+    ImageFormSet = modelformset_factory(Images,
                                         form=ImageForm)
 
     if request.method == 'POST':
