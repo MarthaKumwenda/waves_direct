@@ -40,13 +40,8 @@ font-size: 20px;
 /*for base*/
 
 body{
-<<<<<<< HEAD
-  margin-top: 80px;
-
-=======
   /*background-color:#f0Ded3;*/
   margin-top: 45px;
->>>>>>> 044a55eff99d19cbe5871aa412ccf920fa244774
 }
 
 .navbar{
@@ -66,13 +61,9 @@ body{
 }
 h1{
 padding-top: 100px;
-<<<<<<< HEAD
 /*color:white;*/
-font-size: 70px;
-=======
 color:#222222;
 font-size: 100px;
->>>>>>> 044a55eff99d19cbe5871aa412ccf920fa244774
 font-family:serif;
 font-weight: bolder;
 text-align: center;
@@ -353,9 +344,6 @@ img {
 /* BEAUTY */
 body,
 html {
-  /*background-image:url('imgs/g5.jpg');*/
-  background-repeat: no-repeat;
-  background-size: 100% 900%;
   padding-bottom: 20px;
   padding-top: 20px;
 }
