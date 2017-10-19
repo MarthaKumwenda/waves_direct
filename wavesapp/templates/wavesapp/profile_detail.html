@@ -70,7 +70,7 @@ body{
 <div class="container">
   <div class="row">
     <hr>
-        <h2>Commment</h2>
+        <h2>Comment</h2>
     <form class="form-group"  method="post">
       <a class="btn btn-default" href="{% url 'add_comment_to_profile' pk=profile.pk %}">Add comment</a>
       {% for comment in profile.comments.all %}
