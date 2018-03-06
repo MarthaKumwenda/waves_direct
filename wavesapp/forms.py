@@ -41,7 +41,7 @@ class PopupForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('author', 'text',)
+        fields = ('text',)
 
 class GalleryForm(forms.ModelForm):
     title = forms.CharField(max_length=128)

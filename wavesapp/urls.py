@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^comment/(?P<pk>\d+)/approve/$', views.comment_approve, name='comment_approve'),
     url(r'^comment/(?P<pk>\d+)/remove/$', views.comment_remove, name='comment_remove'),
     url(r'^edit_profile/$', views.edit_profile, name='edit_profile'),
-    url(r'^reserve/$',views.reserve,name='reserve'),
+    url(r'^reserve/(?P<pk>\d+)/$',views.reserve,name='reserve'),
     url('^', include('django.contrib.auth.urls')),
     url(r'^developers/$',views.developers,name='developers'),
     url(r'^gallery/$',views.gallery,name='gallery'),

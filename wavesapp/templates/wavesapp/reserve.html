@@ -1,3 +1,5 @@
+{% extends "wavesapp/base.html"%}
+
 {% load staticfiles %}
 {% load widget_tweaks %}
 <!DOCTYPE html>
@@ -10,7 +12,10 @@
   </head>
   </head>
   <body>
-<div class="jumbotron">
+{% block content %}
+<div id="content-container" class="container p-none">
+<div class="lgn-container col-lg-6 " style="text-align:center;margin-left:300px; padding-top:30px;">
+<div class="jumbotron" style="height:900px;">
   <h1>Make Appointment</h1>
   <form method="post">
     {% csrf_token %}
@@ -22,9 +27,13 @@
       {% endif %}
     </div>
     {% endfor %}
-    <a href="{% url 'confirm_booking' %}" > <button class="btn btn-success" type="submit" name="send">Send</button> </a>
+    <a href="{% url 'confirm_booking' pk=company_name.user.id %}" > <button class="btn btn-success" type="submit" name="send">Send</button> </a>
 
   </form>
 </div>
+</div>
+</div>
+{% endblock %}
+<script src="{% static 'wavesapp/script.js' %}"></script>
   </body>
 </html>

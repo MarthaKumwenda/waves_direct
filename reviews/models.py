@@ -3,19 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 from wavesapp.models import Profile
+from django.contrib.auth.models import User
 import numpy as np
 # Create your models here.
-
-# class Wine(models.Model):
-#     name = models.CharField(max_length=200)
-#
-#     def average_rating(self):
-#         all_ratings = map(lambda x: x.rating, self.review_set.all())
-#         return np.mean(all_ratings)
-#
-#     def __unicode__(self):
-#         return self.name
-
 
 class Review(models.Model):
     RATING_CHOICES = (
@@ -27,6 +17,6 @@ class Review(models.Model):
     )
     profile = models.ForeignKey(Profile, default=None, null=True)
     pub_date = models.DateTimeField('date published')
-    user_name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, default=None, null=True)
     comment = models.CharField(max_length=200)
     rating = models.IntegerField(choices=RATING_CHOICES)

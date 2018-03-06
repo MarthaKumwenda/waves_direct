@@ -33,7 +33,7 @@ class Profile(models.Model):
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
     def average_rating(self):
-        all_ratings = map(lambda x: x.rating, self.review_set.all())
+        all_ratings = list(map(lambda x: x.rating, self.review_set.all()))
         return np.mean(all_ratings)
 
 class Gallery(models.Model):
@@ -61,12 +61,12 @@ class Popup(models.Model):
     time_of_appointment = models.TimeField(default=None, null=True)
     due_date = models.DateField(default=None, null=True)
     request = models.CharField(max_length = 2000,default=None, null=True)
-
+    company_name = models.ForeignKey(Profile,default=None, null=True)
 
 
 class Comment(models.Model):
     profile = models.ForeignKey('wavesapp.profile', related_name='comments')
-    author = models.CharField(max_length=200)
+    user = models.ForeignKey(User, null=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)

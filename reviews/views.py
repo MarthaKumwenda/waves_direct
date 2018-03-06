@@ -10,7 +10,7 @@ from wavesapp.models import Profile
 from wavesapp.views import profile_detail
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -28,19 +28,19 @@ def review_detail(request, review_id):
 @login_required
 def add_review(request, profile_id):
     profile = get_object_or_404(Profile, pk=profile_id)
-    form = ReviewForm(request.POST)
+    try:
+        review = Review.objects.get(user=request.user, profile=profile)
+    except Exception as e:
+        review = None
+
+    form = ReviewForm(request.POST, instance=review)
     if form.is_valid():
-        rating = form.cleaned_data['rating']
-        comment = form.cleaned_data['comment']
-        user_name = request.user.username
-        review = Review()
+        review = form.save(commit=False)
         review.profile = profile
-        review.user_name = user_name
-        review.rating = rating
-        review.comment = comment
+        review.user = request.user
         review.pub_date = datetime.datetime.now()
         review.save()
 
-        return HttpResponseRedirect(reverse('profile_detail', args=(profile.id,)))
+        return HttpResponseRedirect(reverse('profile_detail', args=(profile.user.id,)))
 
     return render(request, 'profile_detail.html', {'profile': profile, 'form': form})

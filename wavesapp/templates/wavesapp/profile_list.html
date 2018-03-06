@@ -22,7 +22,7 @@
             <h4><a href="{% url 'profile_detail' pk=profile.user.id %}" style="color: silver;">{{profile.location }}</a></h4>
             <h4><a href="{% url 'profile_detail' pk=profile.user.id  %}" style="color: silver;">{{profile.phone }}</a></h4>
 
-            <a href="{% url 'reserve' %}"><button type="button" name="appoinments" class="btn-primary">Appoinments</button></a>
+            <a href="{% url 'reserve' pk=profile.user.id %}"><button type="button" name="appoinments" class="btn-primary">Appoinments</button></a>
           </div><br><br>
       </div>
       <a href="{% url 'profile_detail' pk=profile.user.id  %}">Comments: {{ Profile.approved_comments.count }}</a>

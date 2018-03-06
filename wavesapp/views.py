@@ -45,8 +45,8 @@ def confirm_signin(request, pk):
     return render(request, 'wavesapp/confirm_signin.html',{})
 
 def confirm_booking(request, pk):
-    # reserve = get_object_or_404(Profile, user_id=pk)
-    return render(request, 'wavesapp/confirm_booking.html',{})
+    profile = get_object_or_404(Profile, user_id=pk)
+    return render(request, 'wavesapp/confirm_booking.html',{'profile': profile})
 
 def developers(request):
     return render(request, 'wavesapp/developers.html',{})
@@ -117,8 +117,8 @@ def gallery(request):
                 image = form['image']
                 photo = Images(gallery=galleryForm, image=image)
                 photo.save()
-            messages.success(request,
-                             "You have successfully uploaded your photos!")
+            # messages.success(request,
+            #                  "You have successfully uploaded your photos!")
             return redirect("profile_detail",pk=request.user.id)
         else:
             print (galleryForm.errors, formset.errors)
@@ -130,14 +130,17 @@ def gallery(request):
 
 
 def reserve(request, pk):
+    company_name = get_object_or_404(Profile, user_id=pk)
     if request.method == 'POST':
          appointment_form = PopupForm(request.POST)
          if appointment_form.is_valid():
+            appointment_form.save(commit=False)
+            appointment_form.company_name = company_name
             appointment_form.save()
-            return redirect('confirm_booking',pk=user.id)
+            return redirect('confirm_booking',pk=company_name.user.id)
     else:
         appointment_form = PopupForm()
-    return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form})
+    return render(request, 'wavesapp/reserve.html', {'appointment_form': appointment_form, 'company_name':company_name})
 
 
 
@@ -159,15 +162,17 @@ def edit_profile(request):
         'profile_form':profile_form
     })
 
+@login_required
 def add_comment_to_profile(request, pk):
     profile = get_object_or_404(Profile, pk=pk)
     if request.method == "POST":
         comment_form =CommentForm(request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
+            comment.user = request.user
             comment.profile = profile
             comment.save()
-            return redirect('profile_detail', pk=profile.pk)
+            return redirect('profile_detail', pk=profile.user.id)
     else:
         comment_form = CommentForm
         return render(request, 'wavesapp/add_comment_to_profile.html', {'comment_form':comment_form})
@@ -180,5 +185,6 @@ def comment_approve(request, pk):
 @login_required
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
+    profile = Profile.objects.get(id=comment.profile.id)
     comment.delete()
-    return redirect('profile_detail', pk=comment.profile.pk)
+    return redirect('profile_detail', pk=profile.id)
